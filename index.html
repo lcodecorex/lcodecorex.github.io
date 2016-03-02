@@ -203,9 +203,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1-开头设置编码"><a href="#1-开头设置编码" class="headerlink" title="1.开头设置编码"></a>1.开头设置编码</h4><pre><code>#coding=utf-8
-</code></pre><p>各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8</p>
-<ul>
-<li>计算机系统通用的字符编码工作方式：<br><img src="http://www.liaoxuefeng.com/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0" alt="文本存取"><br><img src="http://www.liaoxuefeng.com/files/attachments/001387245979827634fd6204f9346a1ae6358d9ed051666000/0" alt="浏览网页">
+</code></pre><p>各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8<br>
       
     </div>
     
@@ -233,10 +231,10 @@
 
 
   
-    <article id="post-Activity切换动效" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android JNI 开发" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/Activity切换动效/" class="article-date">
+      <a href="/2016/03/01/Android JNI 开发/" class="article-date">
   	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
 </a>
     </div>
@@ -250,7 +248,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/Activity切换动效/">Activity切换动效</a>
+      <a class="article-title" href="/2016/03/01/Android JNI 开发/">Android JNI 开发</a>
     </h1>
   
 
@@ -259,12 +257,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="模糊、水波纹、折叠实现思路"><a href="#模糊、水波纹、折叠实现思路" class="headerlink" title="模糊、水波纹、折叠实现思路"></a>模糊、水波纹、折叠实现思路</h3><ul>
-<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上</li>
-<li>2.设置Activity切换不展示动画</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">currActivity.startActivity(intent);</span><br><span class="line">currActivity.overridePendingTransition(<span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+        <p>开源C库</p>
+<ul>
+<li>ffmpeg  音视频解码</li>
+<li>opencore 音视频
       
     </div>
     
@@ -275,7 +271,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/01/Activity切换动效/#more">more >></a>
+          <a  href="/2016/03/01/Android JNI 开发/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -322,10 +318,6 @@
 <li><p>在安装android应用程序时，android会为每一个应用程序分配一个linux用户id，除非应用间在manifest.xml中定义了相同的android:sharedUserId属性，其它应用不能访问此应用的数据和资源。</p>
 <blockquote>
 <p>拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机</p>
-</blockquote>
-</li>
-<li>单线程模型原则：android UI操作不是线程安全的，并且这些操作必须在UI线程中执行</li>
-<li><p>UI线程超过5s没有相应用户请求，会弹出对话框提醒用户终止应用。耗时操作需要新开线程，采用Message Quenue机制保证线程间的通信</p>
       
     </div>
     
@@ -381,8 +373,7 @@
       
         <h3 id="1-1-Dalvik架构"><a href="#1-1-Dalvik架构" class="headerlink" title="1.1 Dalvik架构"></a>1.1 Dalvik架构</h3><ul>
 <li>Dalvik VM第一次加载生成Cache文件，速度较慢</li>
-<li>Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间</li>
-<li>dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX
+<li>Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间
       
     </div>
     
@@ -394,6 +385,62 @@
       
         <p class="article-more-link">
           <a  href="/2016/03/01/Dalvik VM学习/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-android图片缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/01/android图片缓存/" class="article-date">
+  	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/01/android图片缓存/">android图片缓存简易原理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一级：内存缓存"><a href="#一级：内存缓存" class="headerlink" title="一级：内存缓存"></a>一级：内存缓存</h3><p>LRU缓存规则：map元素按照最近使用次数从少到多排列，以便要替换缓存中的元素时可快速遍历出最近使用次数最少的元素</p>
+<blockquote>
+<p>LinkedHashMap构造方法的最后一个参数true代表这个map里的元素将按照最近使用次数由少到多排列<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/01/android图片缓存/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -436,7 +483,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-FragmentTransaction每次使用时都需要重新创建对象"><a href="#1-FragmentTransaction每次使用时都需要重新创建对象" class="headerlink" title="1.FragmentTransaction每次使用时都需要重新创建对象"></a>1.FragmentTransaction每次使用时都需要重新创建对象</h4><h4 id="2-字符串格式化"><a href="#2-字符串格式化" class="headerlink" title="2.字符串格式化"></a>2.字符串格式化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.format(<span class="string">"价格区间：%s"</span>,shopBean.price)</span><br></pre></td></tr></table></figure>
+        <h4 id="1-FragmentTransaction每次使用时都需要重新创建对象"><a href="#1-FragmentTransaction每次使用时都需要重新创建对象" class="headerlink" title="1.FragmentTransaction每次使用时都需要重新创建对象"></a>1.FragmentTransaction每次使用时都需要重新创建对象</h4><h4 id="2-字符串格式化"><a href="#2-字符串格式化" class="headerlink" title="2.字符串格式化"></a>2.字符串格式化</h4>
       
     </div>
     
@@ -448,66 +495,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/03/01/android开发小记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-android图片缓存" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/01/android图片缓存/" class="article-date">
-  	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/android图片缓存/">android图片缓存简明原理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一级：内存缓存"><a href="#一级：内存缓存" class="headerlink" title="一级：内存缓存"></a>一级：内存缓存</h3><p>LRU缓存规则：map元素按照最近使用次数从少到多排列，以便要替换缓存中的元素时可快速遍历出最近使用次数最少的元素</p>
-<blockquote>
-<p>LinkedHashMap构造方法的最后一个参数true代表这个map里的元素将按照最近使用次数由少到多排列</p>
-</blockquote>
-<ul>
-<li>获取堆内存：Runtime.getRuntime().maxMemory()</li>
-<li>设置默认的缓存限制为堆内存的1/4
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/01/android图片缓存/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -552,10 +539,6 @@
       
         <h3 id="1-MCV模式"><a href="#1-MCV模式" class="headerlink" title="1.MCV模式"></a>1.MCV模式</h3><ul>
 <li><p>网络层</p>
-<blockquote>
-<ul>
-<li>网络封装</li>
-<li>编写通信工具
       
     </div>
     
@@ -583,10 +566,10 @@
 
 
   
-    <article id="post-Android JNI 开发" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Activity切换动效" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/Android JNI 开发/" class="article-date">
+      <a href="/2016/03/01/Activity切换动效/" class="article-date">
   	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
 </a>
     </div>
@@ -600,7 +583,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/Android JNI 开发/">Android JNI 开发</a>
+      <a class="article-title" href="/2016/03/01/Activity切换动效/">Activity切换动效</a>
     </h1>
   
 
@@ -609,13 +592,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开源C库</p>
-<ul>
-<li>ffmpeg  音视频解码</li>
-<li>opencore 音视频</li>
-<li>opencv  图像处理</li>
-</ul>
-<p>学习c使用DEVCPP软件，使用c99标准<br>
+        <h3 id="模糊、水波纹、折叠实现思路"><a href="#模糊、水波纹、折叠实现思路" class="headerlink" title="模糊、水波纹、折叠实现思路"></a>模糊、水波纹、折叠实现思路</h3><ul>
+<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
       
     </div>
     
@@ -626,7 +604,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/01/Android JNI 开发/#more">more >></a>
+          <a  href="/2016/03/01/Activity切换动效/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

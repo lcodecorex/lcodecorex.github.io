@@ -7,29 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在安装android应用程序时，android会为每一个应用程序分配一个linux用户id，除非应用间在manifest.xml中定义了相同的android:sharedUserId属性，其它应用不能访问此应用的数据和资源。
 
-拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机
-
-
-单线程模型原则：android UI操作不是线程安全的，并且这些操作必须在UI线程中执">
+拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android线程学习">
 <meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/Android线程/index.html">
 <meta property="og:site_name" content="超歌的博客">
 <meta property="og:description" content="在安装android应用程序时，android会为每一个应用程序分配一个linux用户id，除非应用间在manifest.xml中定义了相同的android:sharedUserId属性，其它应用不能访问此应用的数据和资源。
 
-拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机
-
-
-单线程模型原则：android UI操作不是线程安全的，并且这些操作必须在UI线程中执">
-<meta property="og:updated_time" content="2016-03-01T16:31:08.000Z">
+拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机">
+<meta property="og:updated_time" content="2016-03-02T06:29:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android线程学习">
 <meta name="twitter:description" content="在安装android应用程序时，android会为每一个应用程序分配一个linux用户id，除非应用间在manifest.xml中定义了相同的android:sharedUserId属性，其它应用不能访问此应用的数据和资源。
 
-拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机
-
-
-单线程模型原则：android UI操作不是线程安全的，并且这些操作必须在UI线程中执">
+拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
   
@@ -227,11 +218,10 @@
 <li><p>在安装android应用程序时，android会为每一个应用程序分配一个linux用户id，除非应用间在manifest.xml中定义了相同的android:sharedUserId属性，其它应用不能访问此应用的数据和资源。</p>
 <blockquote>
 <p>拥有相同linux id的应用可以运行在同一个进程内，共享同一个java虚拟机</p>
-</blockquote>
+<a id="more"></a></blockquote>
 </li>
 <li>单线程模型原则：android UI操作不是线程安全的，并且这些操作必须在UI线程中执行</li>
 <li><p>UI线程超过5s没有相应用户请求，会弹出对话框提醒用户终止应用。耗时操作需要新开线程，采用Message Quenue机制保证线程间的通信</p>
-<a id="more"></a>
 <blockquote>
 <p>Handler可与UI线程通信，Handler把消息传递给Looper，Looper再把消息传递放入队列，Looper也把消息队列里的消息广播给所有Handler，Handler接收到消息后调用handleMessage方法处理</p>
 <blockquote>
@@ -281,11 +271,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/01/Activity切换动效/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/01/Android JNI 开发/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Activity切换动效
+          Android JNI 开发
         
       </div>
     </a>

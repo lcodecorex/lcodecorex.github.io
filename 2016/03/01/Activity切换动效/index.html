@@ -6,27 +6,18 @@
   <title>Activity切换动效 | 超歌的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="模糊、水波纹、折叠实现思路
-1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
-2.设置Activity切换不展示动画
-
-12currActivity.startActivity(intent);currActivity.override">
+1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Activity切换动效">
 <meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/Activity切换动效/index.html">
 <meta property="og:site_name" content="超歌的博客">
 <meta property="og:description" content="模糊、水波纹、折叠实现思路
-1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
-2.设置Activity切换不展示动画
-
-12currActivity.startActivity(intent);currActivity.override">
-<meta property="og:updated_time" content="2016-03-01T16:30:32.000Z">
+1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上">
+<meta property="og:updated_time" content="2016-03-02T06:28:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity切换动效">
 <meta name="twitter:description" content="模糊、水波纹、折叠实现思路
-1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
-2.设置Activity切换不展示动画
-
-12currActivity.startActivity(intent);currActivity.override">
+1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
   
@@ -221,11 +212,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="模糊、水波纹、折叠实现思路"><a href="#模糊、水波纹、折叠实现思路" class="headerlink" title="模糊、水波纹、折叠实现思路"></a>模糊、水波纹、折叠实现思路</h3><ul>
-<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上</li>
+<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上<a id="more"></a></li>
 <li>2.设置Activity切换不展示动画</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">currActivity.startActivity(intent);</span><br><span class="line">currActivity.overridePendingTransition(<span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h4 id="模糊"><a href="#模糊" class="headerlink" title="模糊"></a>模糊</h4><p>1.创建一个匹配父窗口的ImageView</p>
+<p>–</p>
+<h4 id="模糊"><a href="#模糊" class="headerlink" title="模糊"></a>模糊</h4><p>1.创建一个匹配父窗口的ImageView</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> ImageView <span class="title">createImageView</span><span class="params">(Activity destActivity, Bitmap bmp)</span> </span>&#123;</span><br><span class="line">        ImageView imageView = <span class="keyword">new</span> ImageView(destActivity);</span><br><span class="line">        imageView.setImageBitmap(bmp);</span><br><span class="line">        imageView.setScaleType(ScaleType.FIT_XY);</span><br><span class="line">        WindowManager.LayoutParams windowParams = <span class="keyword">new</span> WindowManager.LayoutParams();</span><br><span class="line">        windowParams.gravity = Gravity.TOP;</span><br><span class="line">        windowParams.x = <span class="number">0</span>;</span><br><span class="line">        windowParams.y = top;</span><br><span class="line">        windowParams.height = bmp.getHeight();</span><br><span class="line">        windowParams.width = bmp.getWidth();</span><br><span class="line">        windowParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;</span><br><span class="line">        windowParams.format = PixelFormat.TRANSLUCENT;</span><br><span class="line">        windowParams.windowAnimations = <span class="number">0</span>;</span><br><span class="line">        destActivity.getWindowManager().addView(imageView, windowParams);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> imageView;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>2.模糊处理</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (VERSION.SDK_INT &gt; <span class="number">16</span>) &#123;</span><br><span class="line">            Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig(), <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> RenderScript rs = RenderScript.create(context);</span><br><span class="line">            <span class="keyword">final</span> Allocation input = Allocation.createFromBitmap(rs, sentBitmap, Allocation.MipmapControl.MIPMAP_NONE,</span><br><span class="line">                    Allocation.USAGE_SCRIPT);</span><br><span class="line">            <span class="keyword">final</span> Allocation output = Allocation.createTyped(rs, input.getType());</span><br><span class="line">            <span class="keyword">final</span> ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));</span><br><span class="line">            script.setRadius(radius);</span><br><span class="line">            script.setInput(input);</span><br><span class="line">            script.forEach(output);</span><br><span class="line">            output.copyTo(bitmap);</span><br><span class="line">            <span class="keyword">return</span> bitmap;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
@@ -244,18 +236,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/01/python学习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/01/android项目架构/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          python学习
+          android项目架构
         
       </div>
     </a>
   
   
-    <a href="/2016/03/01/Android线程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android线程学习</div>
+    <a href="/2016/03/01/图片模糊效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android图片模糊处理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

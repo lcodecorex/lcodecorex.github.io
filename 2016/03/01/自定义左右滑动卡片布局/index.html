@@ -5,18 +5,18 @@
   
   <title>自定义不占满全屏可左右滑动的卡片 | 超歌的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="方案一  修改ViewPager实践中发现许多较为关键的类、变量、方法都是私有的，无法进行操作，只好定义SuperViewPager继承自ViewGroup，复制ViewPager里面所有内容并进行修改">
+  <meta name="description" content="效果图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义不占满全屏可左右滑动的卡片">
 <meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/自定义左右滑动卡片布局/index.html">
 <meta property="og:site_name" content="超歌的博客">
-<meta property="og:description" content="方案一  修改ViewPager实践中发现许多较为关键的类、变量、方法都是私有的，无法进行操作，只好定义SuperViewPager继承自ViewGroup，复制ViewPager里面所有内容并进行修改">
+<meta property="og:description" content="效果图">
 <meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/card_slide.png">
 <meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/multiviewpager.png">
-<meta property="og:updated_time" content="2016-03-01T16:36:29.000Z">
+<meta property="og:updated_time" content="2016-03-02T06:41:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义不占满全屏可左右滑动的卡片">
-<meta name="twitter:description" content="方案一  修改ViewPager实践中发现许多较为关键的类、变量、方法都是私有的，无法进行操作，只好定义SuperViewPager继承自ViewGroup，复制ViewPager里面所有内容并进行修改">
+<meta name="twitter:description" content="效果图">
 <meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/card_slide.png">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
@@ -211,8 +211,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blogImg/card_slide.png" alt="最终效果"></p>
-<h3 id="方案一-修改ViewPager"><a href="#方案一-修改ViewPager" class="headerlink" title="方案一  修改ViewPager"></a>方案一  修改ViewPager</h3><p>实践中发现许多较为关键的类、变量、方法都是私有的，无法进行操作，只好定义SuperViewPager继承自ViewGroup，复制ViewPager里面所有内容并进行修改<br><a id="more"></a></p>
+        <h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><a id="more"></a>
+<p><img src="/assets/blogImg/card_slide.png" alt="最终效果"></p>
+<h3 id="方案一-修改ViewPager"><a href="#方案一-修改ViewPager" class="headerlink" title="方案一  修改ViewPager"></a>方案一  修改ViewPager</h3><p>实践中发现许多较为关键的类、变量、方法都是私有的，无法进行操作，只好定义SuperViewPager继承自ViewGroup，复制ViewPager里面所有内容并进行修改</p>
 <ul>
 <li><p>1.定义两个自定义属性，pagerSpace代表两个卡片之间的距离，pageOerlayWidth代表卡片越界布局的宽度</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">SuperViewPager</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>(context, attrs);</span><br><span class="line"></span><br><span class="line">       TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SuperPager);</span><br><span class="line">       pagerSpace = a.getDimensionPixelSize(R.styleable.SuperPager_sp_pagerSpace, (<span class="keyword">int</span>) dp2px(<span class="number">20</span>));</span><br><span class="line">       pageOerlayWidth = a.getDimensionPixelSize(R.styleable.SuperPager_sp_pageOerlayWidth, (<span class="keyword">int</span>) dp2px(<span class="number">12</span>));</span><br><span class="line">       a.recycle();</span><br><span class="line"></span><br><span class="line">       initViewPager();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
@@ -312,6 +313,11 @@
       </div>
     </a>
   
+  
+    <a href="/2016/03/01/圆形图片/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android实现圆形图片</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 

@@ -7,23 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.1 Dalvik架构
 Dalvik VM第一次加载生成Cache文件，速度较慢
-Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间
-dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX">
+Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dalvik VM学习">
 <meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/Dalvik VM学习/index.html">
 <meta property="og:site_name" content="超歌的博客">
 <meta property="og:description" content="1.1 Dalvik架构
 Dalvik VM第一次加载生成Cache文件，速度较慢
-Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间
-dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX">
-<meta property="og:updated_time" content="2016-03-01T16:31:24.000Z">
+Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间">
+<meta property="og:updated_time" content="2016-03-02T06:29:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dalvik VM学习">
 <meta name="twitter:description" content="1.1 Dalvik架构
 Dalvik VM第一次加载生成Cache文件，速度较慢
-Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间
-dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX">
+Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
   
@@ -219,9 +216,10 @@ dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4�
       
         <h3 id="1-1-Dalvik架构"><a href="#1-1-Dalvik架构" class="headerlink" title="1.1 Dalvik架构"></a>1.1 Dalvik架构</h3><ul>
 <li>Dalvik VM第一次加载生成Cache文件，速度较慢</li>
-<li>Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间</li>
-<li>dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX<a id="more"></a>
-<h3 id="1-2-和java虚拟机的差异"><a href="#1-2-和java虚拟机的差异" class="headerlink" title="1.2  和java虚拟机的差异"></a>1.2  和java虚拟机的差异</h3></li>
+<li>Dalvik解释器采用预先算好的Goto地址，基于每个指令OpCode，都固定以64bytes为相对地址，可节省指令执行后查表的时间<a id="more"></a></li>
+<li>dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4倍，格式为ODEX</li>
+</ul>
+<h3 id="1-2-和java虚拟机的差异"><a href="#1-2-和java虚拟机的差异" class="headerlink" title="1.2  和java虚拟机的差异"></a>1.2  和java虚拟机的差异</h3><ul>
 <li>虚拟机很小,使用的空间也很小</li>
 <li>没有JIT编译器</li>
 <li>常量池使用32位索引，以简化解释器</li>
@@ -265,8 +263,8 @@ dx将java的.class文件转换成.dex格式，优化时会使文件增加1～4�
     </a>
   
   
-    <a href="/2016/03/01/android开发小记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">android开发小记</div>
+    <a href="/2016/03/01/android图片缓存/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android图片缓存简易原理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

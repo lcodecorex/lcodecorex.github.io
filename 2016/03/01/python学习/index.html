@@ -6,27 +6,21 @@
   <title>python学习 | 超歌的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.开头设置编码#coding=utf-8
-各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8
-
-计算机系统通用的字符编码工作方式：">
+各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python学习">
 <meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/python学习/index.html">
 <meta property="og:site_name" content="超歌的博客">
 <meta property="og:description" content="1.开头设置编码#coding=utf-8
-各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8
-
-计算机系统通用的字符编码工作方式：">
-<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0">
-<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001387245979827634fd6204f9346a1ae6358d9ed051666000/0">
-<meta property="og:updated_time" content="2016-03-01T16:31:31.000Z">
+各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/unicode.png">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/broser.png">
+<meta property="og:updated_time" content="2016-03-02T06:26:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习">
 <meta name="twitter:description" content="1.开头设置编码#coding=utf-8
-各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8
-
-计算机系统通用的字符编码工作方式：">
-<meta name="twitter:image" content="http://www.liaoxuefeng.com/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0">
+各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8">
+<meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/unicode.png">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
   
@@ -221,12 +215,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1-开头设置编码"><a href="#1-开头设置编码" class="headerlink" title="1.开头设置编码"></a>1.开头设置编码</h4><pre><code>#coding=utf-8
-</code></pre><p>各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8</p>
+</code></pre><p>各国的编码规范混在一起，容易出现乱码的现象。Unicode标准统一了编码，但较浪费空间，因而出现了“可变长编码”的utf-8<br><a id="more"></a></p>
 <ul>
-<li>计算机系统通用的字符编码工作方式：<br><img src="http://www.liaoxuefeng.com/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0" alt="文本存取"><br><img src="http://www.liaoxuefeng.com/files/attachments/001387245979827634fd6204f9346a1ae6358d9ed051666000/0" alt="浏览网页"><a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取字符的整数表示值</span></span><br><span class="line">print(ord(<span class="string">'A'</span>))</span><br><span class="line"><span class="comment">#获取对应字符</span></span><br><span class="line">print(chr(<span class="number">66</span>))</span><br><span class="line"><span class="comment">#对str,len()函数计算字符数,对bytes,len()函数计算字节数</span></span><br><span class="line">len(<span class="string">'中文'</span>) <span class="comment">#2</span></span><br><span class="line">len(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment">#6</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>计算机系统通用的字符编码工作方式：<br><img src="/assets/blogImg/unicode.png" alt="文本存取"><br><img src="/assets/blogImg/broser.png" alt="浏览网页"></li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取字符的整数表示值</span></span><br><span class="line">print(ord(<span class="string">'A'</span>))</span><br><span class="line"><span class="comment">#获取对应字符</span></span><br><span class="line">print(chr(<span class="number">66</span>))</span><br><span class="line"><span class="comment">#对str,len()函数计算字符数,对bytes,len()函数计算字节数</span></span><br><span class="line">len(<span class="string">'中文'</span>) <span class="comment">#2</span></span><br><span class="line">len(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment">#6</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-声明变量-不用声明类型"><a href="#2-声明变量-不用声明类型" class="headerlink" title="2.声明变量  不用声明类型"></a>2.声明变量  <code>不用声明类型</code></h4><pre><code>a=10
 b=5
 </code></pre><h4 id="3-条件语句"><a href="#3-条件语句" class="headerlink" title="3. 条件语句"></a>3. 条件语句</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">score = <span class="number">90</span></span><br><span class="line"><span class="keyword">if</span> score&lt;<span class="number">80</span> :</span><br><span class="line">    <span class="comment">#print前面必须要有缩进</span></span><br><span class="line">    print(<span class="string">"优秀"</span>)</span><br><span class="line"><span class="keyword">elif</span> score&gt;<span class="number">60</span> :</span><br><span class="line">    print(<span class="string">"及格"</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    print(<span class="string">"不及格"</span>)</span><br></pre></td></tr></table></figure>
@@ -271,9 +264,8 @@ b=5
 </li>
 </ul>
 <h4 id="9-引入py文件"><a href="#9-引入py文件" class="headerlink" title="9.引入py文件"></a>9.引入py文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mylib</span><br><span class="line"></span><br><span class="line">h = mylib.hello()</span><br><span class="line">h.sayHello()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> mylib <span class="keyword">import</span> Hello</span><br><span class="line"></span><br><span class="line">h = Hello()</span><br><span class="line">h.sayHello()</span><br></pre></td></tr></table></figure>
-<h4 id="10-I-O操作"><a href="#10-I-O操作" class="headerlink" title="10.I/O操作"></a>10.I/O操作</h4><p>#####读写文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> f:</span><br><span class="line">        f.close()</span><br><span class="line"><span class="comment">#Python引入了with语句来自动帮我们调用close()方法,上面可改为：</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
-<p>#####StringIO(在内存中读写str), BytesIO(在内存中读写bytes)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#StringIO</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line">f = StringIO()</span><br><span class="line"><span class="comment">#写</span></span><br><span class="line">f.write(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">#读</span></span><br><span class="line">f = StringIO(<span class="string">'Hello!\nHi!\nGoodbye!'</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    s = f.readline()</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">''</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(s.strip())</span><br><span class="line"></span><br><span class="line"><span class="comment">#BytesIO</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line">f = BytesIO()</span><br><span class="line">f.write(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure></p>
+<h4 id="10-I-O操作"><a href="#10-I-O操作" class="headerlink" title="10.I/O操作"></a>10.I/O操作</h4><h5 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">if</span> f:</span><br><span class="line">        f.close()</span><br><span class="line"><span class="comment">#Python引入了with语句来自动帮我们调用close()方法,上面可改为：</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
+<h5 id="StringIO-在内存中读写str-BytesIO-在内存中读写bytes"><a href="#StringIO-在内存中读写str-BytesIO-在内存中读写bytes" class="headerlink" title="StringIO(在内存中读写str), BytesIO(在内存中读写bytes)"></a>StringIO(在内存中读写str), BytesIO(在内存中读写bytes)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#StringIO</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line">f = StringIO()</span><br><span class="line"><span class="comment">#写</span></span><br><span class="line">f.write(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">#读</span></span><br><span class="line">f = StringIO(<span class="string">'Hello!\nHi!\nGoodbye!'</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    s = f.readline()</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">''</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(s.strip())</span><br><span class="line"></span><br><span class="line"><span class="comment">#BytesIO</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line">f = BytesIO()</span><br><span class="line">f.write(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
 <p>–<br>学习中…</p>
 
       
@@ -285,8 +277,8 @@ b=5
 <nav id="article-nav">
   
   
-    <a href="/2016/03/01/Activity切换动效/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Activity切换动效</div>
+    <a href="/2016/03/01/Android JNI 开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android JNI 开发</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
