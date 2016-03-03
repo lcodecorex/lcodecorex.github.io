@@ -3,27 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android JNI 开发 | 超歌的博客</title>
+  <title>RxJava/RxAndroid响应式编程框架简析 | 超歌的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开源C库
-
-ffmpeg  音视频解码
-opencore 音视频">
+  <meta name="description" content="引言谈到RxJava，首先得说一说观察者模式。
+在此种模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实现事件处理系统。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android JNI 开发">
-<meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/Android JNI 开发/index.html">
+<meta property="og:title" content="RxJava/RxAndroid响应式编程框架简析">
+<meta property="og:url" content="http://lcodecorex.github.io/2016/03/03/RxJava-RxAndroid简用/index.html">
 <meta property="og:site_name" content="超歌的博客">
-<meta property="og:description" content="开源C库
-
-ffmpeg  音视频解码
-opencore 音视频">
-<meta property="og:updated_time" content="2016-03-02T06:32:34.000Z">
+<meta property="og:description" content="引言谈到RxJava，首先得说一说观察者模式。
+在此种模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实现事件处理系统。">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/observer.png">
+<meta property="og:updated_time" content="2016-03-03T13:32:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android JNI 开发">
-<meta name="twitter:description" content="开源C库
-
-ffmpeg  音视频解码
-opencore 音视频">
+<meta name="twitter:title" content="RxJava/RxAndroid响应式编程框架简析">
+<meta name="twitter:description" content="引言谈到RxJava，首先得说一说观察者模式。
+在此种模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实现事件处理系统。">
+<meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/observer.png">
   
     <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
   
@@ -124,7 +120,7 @@ opencore 音视频">
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
+						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
 					</div>
 				</section>
 				
@@ -184,11 +180,11 @@ opencore 音视频">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Android JNI 开发" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-RxJava-RxAndroid简用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/Android JNI 开发/" class="article-date">
-  	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
+      <a href="/2016/03/03/RxJava-RxAndroid简用/" class="article-date">
+  	<time datetime="2016-03-02T17:18:18.000Z" itemprop="datePublished">Mar 3</time>
 </a>
     </div>
   
@@ -201,7 +197,7 @@ opencore 音视频">
         
   
     <h1 class="article-title" itemprop="name">
-      Android JNI 开发
+      RxJava/RxAndroid响应式编程框架简析
     </h1>
   
 
@@ -209,6 +205,10 @@ opencore 音视频">
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -217,89 +217,19 @@ opencore 音视频">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开源C库</p>
-<ul>
-<li>ffmpeg  音视频解码</li>
-<li>opencore 音视频<a id="more"></a></li>
-<li>opencv  图像处理</li>
-</ul>
-<p>学习c使用DEVCPP软件，使用c99标准</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);<span class="comment">//调用系统指令，让控制台暂停  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>java</th>
-<th>byte</th>
-<th>short</th>
-<th>char</th>
-<th>int</th>
-<th>float</th>
-<th>double</th>
-<th>long</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>占用字节数</td>
-<td>1</td>
-<td>2</td>
-<td>2</td>
-<td>4</td>
-<td>4</td>
-<td>8</td>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>c</th>
-<th>char</th>
-<th>short</th>
-<th>long</th>
-<th>int</th>
-<th>float</th>
-<th>double</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>占用字节数</td>
-<td>1</td>
-<td>2</td>
-<td>4</td>
-<td>4</td>
-<td>4</td>
-<td>8</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>java中int float double short类型可以直接用c中相应类型代替</li>
-<li>c中的char可用java中的byte代替</li>
-<li>c中的long可用java中int代替</li>
-<li>java中的long可用c中的long long代替</li>
-<li>指针(表示一个地址)，指针变量(变量的值为地址)</li>
-<li>＊在类型后表示该类型的指针变量，int<em> p=&i; 则</em>p＝i；表示p指向的地址里存的值，p为int型的指针变量，p的值为i的地址</li>
-<li>＊在变量前表示该地址里存的值，*p = i</li>
-<li>动态分配内存 ＊p=(int＊)malloc(sizeof(int));</li>
-<li><p>c语言内存：</p>
-<blockquote>
-<ul>
-<li>.data  常量池</li>
-<li>.code  代码段</li>
-<li>.stack 所有静态分配的内存都放在栈内存中，连续分配</li>
-<li>堆内存  动态分配的内存都放在堆内存中，不连续分配</li>
-</ul>
-</blockquote>
-</li>
-<li><p>函数指针</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*pf)(<span class="keyword">int</span> x,<span class="keyword">int</span> y);</span><br><span class="line">pf = add;</span><br><span class="line">pf(x,y);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>–<br>学习中…</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>谈到RxJava，首先得说一说观察者模式。</p>
+<p>在此种模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实现事件处理系统。</p>
+<a id="more"></a>
+<p>例如，按钮的点击事件和事件监听就是一种很常见的观察者模式。<br><img src="/assets/blogImg/observer.png" alt=""></p>
+<p>Button作为被观察者(Observable)，OnClickListener作为观察者(Observer)，Button需要注册监听事件，也就是通过setOnclickListener(Subscribe)达成两者的订阅关系。当Button被点击时，Button就会向它的观察者（Button被订阅，所以观察者也相当于订阅者）发送一个<code>广播</code>，随后观察者对事件进行响应。</p>
+<p>RxJava利用这种订阅的方式，使得异步操作更加方便，代码逻辑的简洁性大大提高，便于维护，其旨在提供一个更加流畅的应用体验。</p>
+<p>总而言之，RxJava是一个利用观察者模式，可方便处理基于事件的异步操作的编程库。</p>
+<h2 id="RxJava的使用"><a href="#RxJava的使用" class="headerlink" title="RxJava的使用"></a>RxJava的使用</h2><p>RxJava拥有四个概念，Observable (可观察者，即被观察者)、 Observer (观察者)、 subscribe (订阅)、事件。</p>
+<h3 id="1-创建Observer"><a href="#1-创建Observer" class="headerlink" title="1.创建Observer"></a>1.创建Observer</h3><p>Subscriber(订阅者)与Observer的使用方法一致，实际在内部，Observer也是转为Subscriber来使用的。</p>
+<h3 id="2-创建Observable"><a href="#2-创建Observable" class="headerlink" title="2.创建Observable"></a>2.创建Observable</h3><h3 id="3-添加Subscribe-订阅"><a href="#3-添加Subscribe-订阅" class="headerlink" title="3.添加Subscribe(订阅)"></a>3.添加Subscribe(订阅)</h3><h2 id="RxAndroid"><a href="#RxAndroid" class="headerlink" title="RxAndroid"></a>RxAndroid</h2><h3 id="AndroidSchedulers"><a href="#AndroidSchedulers" class="headerlink" title="AndroidSchedulers"></a>AndroidSchedulers</h3><p>针对Android的线程调度器</p>
+<h3 id="AndroidObservable"><a href="#AndroidObservable" class="headerlink" title="AndroidObservable"></a>AndroidObservable</h3><p>可用于监听Android的生命周期，通过<code>广播</code></p>
+<hr>
+<p>学习中</p>
 
       
     </div>
@@ -309,18 +239,18 @@ opencore 音视频">
     
 <nav id="article-nav">
   
-    <a href="/2016/03/01/自定义左右滑动卡片布局/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/03/Android JNI 开发/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          自定义不占满全屏可左右滑动的卡片
+          Android Studio2.0 JNI 开发
         
       </div>
     </a>
   
   
-    <a href="/2016/03/01/Dalvik VM学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Dalvik VM学习</div>
+    <a href="/2016/03/01/Activity切换动效/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Activity切换动效</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -349,7 +279,7 @@ opencore 音视频">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Android JNI 开发" data-title="Android JNI 开发" data-url="http://lcodecorex.github.io/2016/03/01/Android JNI 开发/"></div>
+	<div class="ds-thread" data-thread-key="RxJava-RxAndroid简用" data-title="RxJava/RxAndroid响应式编程框架简析" data-url="http://lcodecorex.github.io/2016/03/03/RxJava-RxAndroid简用/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
