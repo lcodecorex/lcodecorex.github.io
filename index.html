@@ -176,6 +176,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Android客户端跟服务器交互的安全问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/05/Android客户端跟服务器交互的安全问题/" class="article-date">
+  	<time datetime="2016-03-05T07:54:20.000Z" itemprop="datePublished">Mar 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/05/Android客户端跟服务器交互的安全问题/">Android客户端跟服务器交互的安全问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先引入两个问题：</p>
+<p>1.如何防止在向服务器请求或者发送数据时防止被伪造？</p>
+<p>2.截取客户端数据并伪造成客户端发给服务器怎么办？</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/05/Android客户端跟服务器交互的安全问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Android JNI 开发" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -294,10 +350,10 @@
 
 
   
-    <article id="post-Activity切换动效" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-android开发小记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/Activity切换动效/" class="article-date">
+      <a href="/2016/03/01/android开发小记/" class="article-date">
   	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
 </a>
     </div>
@@ -311,7 +367,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/Activity切换动效/">Activity切换动效</a>
+      <a class="article-title" href="/2016/03/01/android开发小记/">android开发小记</a>
     </h1>
   
 
@@ -320,19 +376,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="模糊、水波纹、折叠实现思路"><a href="#模糊、水波纹、折叠实现思路" class="headerlink" title="模糊、水波纹、折叠实现思路"></a>模糊、水波纹、折叠实现思路</h3><ul>
-<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
+        <h4 id="1-FragmentTransaction每次使用时都需要重新创建对象"><a href="#1-FragmentTransaction每次使用时都需要重新创建对象" class="headerlink" title="1.FragmentTransaction每次使用时都需要重新创建对象"></a>1.FragmentTransaction每次使用时都需要重新创建对象</h4><h4 id="2-字符串格式化"><a href="#2-字符串格式化" class="headerlink" title="2.字符串格式化"></a>2.字符串格式化</h4>
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/整理/">整理</a></li></ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/01/Activity切换动效/#more">more >></a>
+          <a  href="/2016/03/01/android开发小记/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -409,10 +468,10 @@
 
 
   
-    <article id="post-自定义左右滑动卡片布局" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Activity切换动效" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/自定义左右滑动卡片布局/" class="article-date">
+      <a href="/2016/03/01/Activity切换动效/" class="article-date">
   	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
 </a>
     </div>
@@ -426,7 +485,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/自定义左右滑动卡片布局/">自定义不占满全屏可左右滑动的卡片</a>
+      <a class="article-title" href="/2016/03/01/Activity切换动效/">Activity切换动效</a>
     </h1>
   
 
@@ -435,7 +494,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4>
+        <h3 id="模糊、水波纹、折叠实现思路"><a href="#模糊、水波纹、折叠实现思路" class="headerlink" title="模糊、水波纹、折叠实现思路"></a>模糊、水波纹、折叠实现思路</h3><ul>
+<li>1.通过getWindow().getDecorView()可以获得最顶层的视图，在调用getDrawingCache()方法即可获取Bitmap，再对该Bitmap进行相关的处理并显示在一个ImageView上
       
     </div>
     
@@ -446,66 +506,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/01/自定义左右滑动卡片布局/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-数据结构与算法学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/01/数据结构与算法学习/" class="article-date">
-  	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/数据结构与算法学习/">数据结构与算法学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/01/数据结构与算法学习/#more">more >></a>
+          <a  href="/2016/03/01/Activity切换动效/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -576,10 +577,10 @@
 
 
   
-    <article id="post-android图片缓存" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据结构与算法学习" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/01/android图片缓存/" class="article-date">
+      <a href="/2016/03/01/数据结构与算法学习/" class="article-date">
   	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
 </a>
     </div>
@@ -593,7 +594,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/01/android图片缓存/">android图片缓存简易原理</a>
+      <a class="article-title" href="/2016/03/01/数据结构与算法学习/">数据结构与算法学习</a>
     </h1>
   
 
@@ -602,20 +603,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一级：内存缓存"><a href="#一级：内存缓存" class="headerlink" title="一级：内存缓存"></a>一级：内存缓存</h3><p>LRU缓存规则：map元素按照最近使用次数从少到多排列，以便要替换缓存中的元素时可快速遍历出最近使用次数最少的元素</p>
-<blockquote>
-<p>LinkedHashMap构造方法的最后一个参数true代表这个map里的元素将按照最近使用次数由少到多排列<br>
+        <ul>
+<li>链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/01/android图片缓存/#more">more >></a>
+          <a  href="/2016/03/01/数据结构与算法学习/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android客户端跟服务器交互的安全问题 | 超歌的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先引入两个问题：
+1.如何防止在向服务器请求或者发送数据时防止被伪造？
+2.截取客户端数据并伪造成客户端发给服务器怎么办？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android客户端跟服务器交互的安全问题">
+<meta property="og:url" content="http://lcodecorex.github.io/2016/03/05/Android客户端跟服务器交互的安全问题/index.html">
+<meta property="og:site_name" content="超歌的博客">
+<meta property="og:description" content="首先引入两个问题：
+1.如何防止在向服务器请求或者发送数据时防止被伪造？
+2.截取客户端数据并伪造成客户端发给服务器怎么办？">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/hacker.jpg">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/https.jpg">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/keystore.png">
+<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/bks.png">
+<meta property="og:updated_time" content="2016-03-05T08:55:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android客户端跟服务器交互的安全问题">
+<meta name="twitter:description" content="首先引入两个问题：
+1.如何防止在向服务器请求或者发送数据时防止被伪造？
+2.截取客户端数据并伪造成客户端发给服务器怎么办？">
+<meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/hacker.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0b8e8ee87e4708173f00d9048c309301";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">超歌</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/instagram">相册</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">西安电子科大学13级，热衷于android开发和新酷技术！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">超歌</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/assets/blogImg/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">超歌</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/instagram">相册</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android客户端跟服务器交互的安全问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/05/Android客户端跟服务器交互的安全问题/" class="article-date">
+  	<time datetime="2016-03-05T07:54:20.000Z" itemprop="datePublished">Mar 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android客户端跟服务器交互的安全问题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先引入两个问题：</p>
+<p>1.如何防止在向服务器请求或者发送数据时防止被伪造？</p>
+<p>2.截取客户端数据并伪造成客户端发给服务器怎么办？</p>
+<a id="more"></a>
+<h3 id="1-客户端与服务器端交互的Token"><a href="#1-客户端与服务器端交互的Token" class="headerlink" title="1.客户端与服务器端交互的Token"></a>1.客户端与服务器端交互的Token</h3><p>Token为服务器按照一定加密方式生成的供客户端下次请求时无需带上用户名和密码的令牌。其存在是为了缓解频繁网络请求给服务器带来的压力。</p>
+<h4 id="有两种使用方式：（TODO-待考证）"><a href="#有两种使用方式：（TODO-待考证）" class="headerlink" title="有两种使用方式：（TODO:待考证）"></a>有两种使用方式：（TODO:待考证）</h4><p>用设备号/设备mac地址作为Token：客户端在登录的时候获取设备的设备号/mac地址，并将其作为参数传递到服务端。客户端请求时需要带上设备号、mac地址，优点是客户端不需重新登录，只要登录一次以后一直可以使用。</p>
+<p>用session值作为Token：当用户登录时，服务器会获取sessionID作为Token返回给客户端，客户端以后只需带上请求数据即可。session过期后，客户端必须重新登录。</p>
+<h5 id="使用时，通常会设有refresh-token和access-token，refresh-token的有效期长于access-token。当请求时发现access-token过期了，客户端可以通过refresh-token来获取一个新的access-token，并且refresh-token的有效期也会重新计时。如果refresh-token也过期了，就只能重新登录了。"><a href="#使用时，通常会设有refresh-token和access-token，refresh-token的有效期长于access-token。当请求时发现access-token过期了，客户端可以通过refresh-token来获取一个新的access-token，并且refresh-token的有效期也会重新计时。如果refresh-token也过期了，就只能重新登录了。" class="headerlink" title="使用时，通常会设有refresh_token和access_token，refresh_token的有效期长于access_token。当请求时发现access_token过期了，客户端可以通过refresh_token来获取一个新的access_token，并且refresh_token的有效期也会重新计时。如果refresh_token也过期了，就只能重新登录了。"></a>使用时，通常会设有refresh_token和access_token，refresh_token的有效期长于access_token。当请求时发现access_token过期了，客户端可以通过refresh_token来获取一个新的access_token，并且refresh_token的有效期也会重新计时。如果refresh_token也过期了，就只能重新登录了。</h5><p>可以发现，Token的使用减小了客户端请求对服务器的压力，同时也避免了客户端用户密码暴露的风险。但是这对解决文章开头提出的两个问题无济于事，通过抓包或者其它的方式，客户端发出的数据很容易被利用。</p>
+<h3 id="2-MITM攻击"><a href="#2-MITM攻击" class="headerlink" title="2.MITM攻击"></a>2.MITM攻击</h3><p>中文说法叫中间人攻击，它是一种间接的入侵方式，攻击模式是通过各种技术手段将受入侵者控制的一台计算机虚拟放置在网络连接中的两台通信计算机之间，这台计算机就称为“中间人”。</p>
+<p><img src="/assets/blogImg/hacker.jpg" alt="黑客"></p>
+<h4 id="DNS欺骗"><a href="#DNS欺骗" class="headerlink" title="DNS欺骗"></a>DNS欺骗</h4><p>攻击者通过入侵DNS服务器、控制路由器等方法把受害者要访问的目标机器域名对应的IP解析为攻击者所控制的机器，这样受害者原本要发送给目标机器的数据就发到了攻击者的机器上，这时攻击者就可以监听甚至修改数据，从而收集到大量的信息。</p>
+<h4 id="会话劫持"><a href="#会话劫持" class="headerlink" title="会话劫持"></a>会话劫持</h4><p>会话劫持就是在一次正常的通信过程中，攻击者作为第三方参与到其中，或者是在数据里加入其他信息，甚至将双方的通信模式暗中改变，即从直接联系变成有攻击者参与的联系。</p>
+<h4 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h4><p>这种利用代理服务器暗渡陈仓的做法简直天衣无缝，攻击者可以自己写一个带有数据记录功能的代理服务程序，它利用的是人们对代理的无条件信任和贪便宜的想法，使得一个又一个“兔子”自动撞了上来，在享受这顿似乎美味的“胡萝卜”的同时却不知道安全正在逐渐远离自己。</p>
+<h3 id="3-https与SSL证书"><a href="#3-https与SSL证书" class="headerlink" title="3.https与SSL证书"></a>3.https与SSL证书</h3><p>用过网盾的人都知道，安装驱动进行交易时，它都需要你安装一个该银行的证书，这样才能保证交易的安全。</p>
+<p><img src="/assets/blogImg/https.jpg" alt="https"></p>
+<p>http的连接很简单，是无状态的。https是一个安全版的超文本传输协议，它由SSL+http协议构建，可进行加密传输，身份认证。</p>
+<p>采用https的server必须从CA申请一个用于证明服务器用途类型的证书。服务端和客户端之间的所有通讯，都是加密的。第三方即使截获，也没有任何意义。因为他没有密钥。</p>
+<p>SSL是Netscape公司所提出的安全保密协议，，SSL运行在TCP/IP层之上、应用层之下，为应用程序提供加密数据通道，它采用了RC4、MD5 以及RSA等加密算法，使用40 位的密钥，适用于商业信息的加密。</p>
+<p>然而，加密和解密过程需要耗费系统大量的开销，严重降低机器的性能，相关测试数据表明使用HTTPS协议传输数据的工作效率只有使用HTTP协议传输的十分之一。因此只需对那些涉及机密数据的交互处理使用HTTPS协议即可。    </p>
+<h3 id="4-Android实现SSL通讯"><a href="#4-Android实现SSL通讯" class="headerlink" title="4.Android实现SSL通讯"></a>4.Android实现SSL通讯</h3><p>由于购买受信任机构颁发的证书需要交相对较高的费用，产生了自己给自己颁发的证书–自签名证书，其在手机应用中普及率较高。</p>
+<p>由于在android操作系统中自己签署的不能通过验证的，所以安卓应用软件将会抛出错误。因此你需要书写自己的代码来检查你的自己签署的证书（<code>此处开发者缺失在密码学的概念的知识</code>）。</p>
+<h4 id="创建自签名证书"><a href="#创建自签名证书" class="headerlink" title="创建自签名证书"></a>创建自签名证书</h4><p><strong>1.生成.keystore</strong></p>
+<p>前往<a href="http://www.bouncycastle.org/latest_releases.html" target="_blank" rel="external">bouncycastle</a>下载最新jar包,<br>如<a href="http://www.bouncycastle.org/download/bcprov-jdk15on-154.jar" target="_blank" rel="external">http://www.bouncycastle.org/download/bcprov-jdk15on-154.jar</a></p>
+<p>输入命令生成.keystore文件 </p>
+<pre><code>keytool -genkey -alias ssltest -keystore ssltest.keystore -validity 365
+</code></pre><p>当要求你录入 Common name 的时候, 要填你的主机名</p>
+<p><img src="/assets/blogImg/keystore.png" alt=""></p>
+<p>随后将密钥(key)从 .keystore 文件导入 .cer 文件</p>
+<pre><code>keytool -export -alias ssltest -keystore ssltest.keystore -file ssltest.cer
+</code></pre><p>最后生成.bks文件</p>
+<pre><code>keytool -import -alias ssltest -file ssltest.cer -keystore ssltest.bks -storetype BKS -providerClass org.bouncycastle.jce.provider.BouncyCastleProvider -providerpath bcprov-jdk15on-154.jar
+</code></pre><p><img src="/assets/blogImg/bks.png" alt=""></p>
+<p><strong>2.把.keystore文件复制到项目的/res/raw/目录下</strong></p>
+<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a><strong>3.使用</strong></h2><p>待更新…</p>
+<p>推荐阅读<a href="http://www.oschina.net/translate/android-security-implementation-of-self-signed-ssl" target="_blank" rel="external">为你的安卓应用实现自签名的 SSL 证书</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/03/Android JNI 开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Studio2.0 JNI 开发</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android客户端跟服务器交互的安全问题" data-title="Android客户端跟服务器交互的安全问题" data-url="http://lcodecorex.github.io/2016/03/05/Android客户端跟服务器交互的安全问题/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lcodecore"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 超歌
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
