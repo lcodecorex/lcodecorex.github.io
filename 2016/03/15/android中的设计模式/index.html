@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android中的设计模式 | 超歌的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="外观模式(facade)要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。它提供一个高层次的接口，使得子系统更易于使用。
+Android源码中Context是一个抽象类，使用了外观模式，它只是定义了抽象接口，真正的实现在ContextImpl类中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android中的设计模式">
+<meta property="og:url" content="http://lcodecorex.github.io/2016/03/15/android中的设计模式/index.html">
+<meta property="og:site_name" content="超歌的博客">
+<meta property="og:description" content="外观模式(facade)要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。它提供一个高层次的接口，使得子系统更易于使用。
+Android源码中Context是一个抽象类，使用了外观模式，它只是定义了抽象接口，真正的实现在ContextImpl类中。">
+<meta property="og:image" content="http://img.blog.csdn.net/20150322120730408">
+<meta property="og:image" content="http://img.blog.csdn.net/20150322120809221">
+<meta property="og:image" content="http://e.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=962b28214dfbfbedc8543e2d19999c53/b7003af33a87e950f9ae4a7216385343fbf2b477.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20130612214140046">
+<meta property="og:image" content="http://belial.me/wp-content/uploads/2015/03/QQ截图20150318225518.png">
+<meta property="og:image" content="http://belial.me/wp-content/uploads/2015/03/QQ截图20150315115212.png">
+<meta property="og:updated_time" content="2016-03-19T04:55:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android中的设计模式">
+<meta name="twitter:description" content="外观模式(facade)要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。它提供一个高层次的接口，使得子系统更易于使用。
+Android源码中Context是一个抽象类，使用了外观模式，它只是定义了抽象接口，真正的实现在ContextImpl类中。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150322120730408">
+  
+    <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0b8e8ee87e4708173f00d9048c309301";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">超歌</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/instagram">相册</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">西安电子科大学13级，热衷于android开发和新酷技术！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">超歌</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/assets/blogImg/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">超歌</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/instagram">相册</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-android中的设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/15/android中的设计模式/" class="article-date">
+  	<time datetime="2016-03-15T06:43:50.000Z" itemprop="datePublished">Mar 15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android中的设计模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="外观模式-facade"><a href="#外观模式-facade" class="headerlink" title="外观模式(facade)"></a>外观模式(facade)</h2><p>要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。它提供一个高层次的接口，使得子系统更易于使用。</p>
+<p>Android源码中Context是一个抽象类，使用了外观模式，它只是定义了抽象接口，真正的实现在ContextImpl类中。<br><a id="more"></a></p>
+<ol>
+<li>在应用启动时，首先会fork一个子进程，并且调用ActivityThread.main方法启动该进程。ActivityThread又会构建Application对象，然后和Activity、ContextImpl关联起来，然后再调用Activity的onCreate、onStart、onResume函数使Activity运行起来。</li>
+<li>Activity启动之后，Android给我们提供了操作系统服务的统一入口，也就是Activity本身。这些工作并不是Activity自己实现的，而是将操作委托给Activity父类ContextThemeWrapper的mBase对象，这个对象的实现类就是ContextImpl。</li>
+<li>Activity的ContextImpl中有许多AlarmManager,PowerManager, PackageManager等，并实现了sendBroadcast()、startActivity()等方法。</li>
+<li>ContextImpl封装了这些功能，使得用户根本不需要知晓Instrumentation相关的信息，直接使用相关方法即可完成相应的工作</li>
+</ol>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>使用方便，使用外观模式客户端完全不需要知道子系统的实现过程；</li>
+<li>降低客户端与子系统的耦合；</li>
+<li>更好的划分访问层次；</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>减少了可变性和灵活性；</li>
+<li>在不引入抽象外观类的情况下，增加新的子系统可能需要修改外观类或客户端的源代码，违背了“开闭原则”；</li>
+</ul>
+<h2 id="桥接模式-bridge"><a href="#桥接模式-bridge" class="headerlink" title="桥接模式(bridge)"></a>桥接模式(bridge)</h2><p>将抽象部分与实现部分分离，使它们都可以独立的变化。</p>
+<p><img src="http://img.blog.csdn.net/20150322120730408" alt="uml"></p>
+<h3 id="角色介绍"><a href="#角色介绍" class="headerlink" title="角色介绍"></a>角色介绍</h3><ul>
+<li>抽象化(Abstraction)角色：抽象化给出的定义，并保存一个对实现化对象的引用。<br>修正抽象化(Refined Abstraction)角色：扩展抽象化角色，改变和修正父类对抽象化的定义。</li>
+<li>实现化(Implementor)角色：这个角色给出实现化角色的接口，但不给出具体的实现。必须指出的是，这个接 口不一定和抽象化角色的接口定义相同，实际上，这两个接口可以非常不一样。实现当只给出底层操作，而抽象化角色应当只给出基于底层操作的更高一化角色应层的操作。</li>
+<li>具体实现化(ConcreteImplementor)角色：这个角色给出实现化角色接口的具体实现。</li>
+</ul>
+<p>ListView和BaseAdpater就是Bridge模式</p>
+<p><img src="http://img.blog.csdn.net/20150322120809221" alt="uml"></p>
+<p>试想一下，视图的排列方式是无穷尽，是人们每个人开发的视图也是无穷尽的。而Android把最常用用的展现方式全部都封装了出来，而在实现角色通过Adapter模式来应变无穷无尽的视图需要。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><p>实现与使用实现的对象解耦，提供了可扩展性，客户对象无需担心操作的实现问题。 如果你采用了bridge模式，在处理新的实现将会非常容易。你只需定义一个新的具体实现类，并且实现它就好了，不需要修改任何其他的东西。但是如果你出现了一个新的具体情况，需要对实现进行修改时，就得先修改抽象的接口，再对其派生类进行修改，但是这种修改只会存在于局部,并且这种修改将变化的英雄控制在局部，并且降低了出现副作用的风险，而且类之间的关系十分清晰，如何实现一目了然。</p>
+<h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<h3 id="模式的使用场景"><a href="#模式的使用场景" class="headerlink" title="模式的使用场景"></a>模式的使用场景</h3><ol>
+<li>相同的方法，不同的执行顺序，产生不同的事件结果时；   </li>
+<li>多个部件或零件，都可以装配到一个对象中，但是产生的运行结果又不相同时；</li>
+<li>产品类非常复杂，或者产品类中的调用顺序不同产生了不同的效能，这个时候使用建造者模式非常合适；</li>
+</ol>
+<p>AlertDialog使用了Builder模式。通过Builder来设置AlertDialog中的title, message, button等参数， 这些参数都存储在类型为AlertController.AlertParams的成员变量P中，AlertController.AlertParams中包含了与之对应的成员变量。在调用Builder类的create函数时才创建AlertDialog, 并且将Builder成员变量P中保存的参数应用到AlertDialog的mAlert对象中。</p>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>良好的封装性， 使用建造者模式可以使客户端不必知道产品内部组成的细节；</li>
+<li>建造者独立，容易扩展；</li>
+<li>在对象创建过程中会使用到系统中的一些其它对象，这些对象在产品对象的创建过程中不易得到。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>会产生多余的Builder对象以及Director对象，消耗内存；</li>
+<li>对象的构建过程暴露。 </li>
+</ul>
+<h2 id="责任链模式-chain-of-responsibility"><a href="#责任链模式-chain-of-responsibility" class="headerlink" title="责任链模式(chain of responsibility)"></a>责任链模式(chain of responsibility)</h2><p>一个请求沿着一条“链”传递，直到该“链”上的某个处理者处理它为止。</p>
+<p><img src="http://e.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=962b28214dfbfbedc8543e2d19999c53/b7003af33a87e950f9ae4a7216385343fbf2b477.jpg" alt="UML"></p>
+<p>Android中关于责任链模式比较明显的体现就是在事件分发过程中对事件的投递，其实严格来说，事件投递的模式并不是严格的责任链模式，但是其是责任链模式的一种变种体现。</p>
+<h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>责任链模式可以对请求者和处理者关系的解耦提高代码的灵活性。</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>责任链模式的最大缺点是对链中责任人的遍历，如果责任人太多那么遍历必定会影响性能，特别是在一些递归调用中，要慎重。</li>
+</ul>
+<h2 id="命令模式-command-（TODO-没看懂）"><a href="#命令模式-command-（TODO-没看懂）" class="headerlink" title="命令模式(command)（TODO 没看懂）"></a>命令模式(command)（TODO 没看懂）</h2><p>将一个请求封装成一个对象，从而使你可用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作。</p>
+<h3 id="模式的使用场景-1"><a href="#模式的使用场景-1" class="headerlink" title="模式的使用场景"></a>模式的使用场景</h3><ol>
+<li>系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。</li>
+<li>系统需要在不同的时间指定请求、将请求排队和执行请求。</li>
+<li>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。</li>
+<li>系统需要将一组操作组合在一起，即支持宏命令。</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20130612214140046" alt="uml"></p>
+<h3 id="角色介绍-1"><a href="#角色介绍-1" class="headerlink" title="角色介绍"></a>角色介绍</h3><ul>
+<li><p>命令角色（Command）：定义命令的接口，声明具体命令类需要执行的方法。这是一个抽象角色。</p>
+</li>
+<li><p>具体命令角色（ConcreteCommand）：命令接口的具体实现对象，通常会持有接收者，并调用接收者的功能来完成命令要执行的操作。</p>
+</li>
+<li><p>调用者角色（Invoker）：负责调用命令对象执行请求，通常会持有命令对象（可以持有多个命令对象）。Invoker是Client真正触发命令并要求命令执行相应操作的地方（使用命令对象的入口）。</p>
+</li>
+<li><p>接受者角色（Receiver）：Receiver是真正执行命令的对象。任何类都可能成为一个接收者，只要它能够实现命令要求实现的相应功能。</p>
+</li>
+<li><p>客户角色（Client）：Client可以创建具体的命令对象，并且设置命令对象的接收者。Tips：不能把Clinet理解为我们平常说的客户端，这里的Client是一个组装命令对象和接受者对象的角色，或者你把它理解为一个装配者。</p>
+</li>
+</ul>
+<p>命令模式其实就是对命令进行封装，将命令请求者和命令执行者的责任分离开来实现松耦合。</p>
+<ul>
+<li>每一个命令都是一个操作：请求的一方发出请求，要求执行一个操作；接收的一方收到请求，并执行操作。</li>
+<li>命令模式允许请求的一方和接收的一方独立开来，使得请求的一方不必知道接收请求的一方的接口，更不必知道请求是怎么被接收，以及操作是否被执行、何时被执行，以及是怎么被执行的。</li>
+<li>命令模式使请求本身成为一个对象，这个对象和其他对象一样可以被存储和传递。</li>
+<li>命令模式的关键在于引入了抽象命令接口，且发送者针对抽象命令接口编程，只有实现了抽象命令接口的具体命令才能与接收者相关联。</li>
+</ul>
+<p>Android中的Runnable：客户端只需要new Thread(new Runnable(){}).start()就开始执行一系列相关的请求，这些请求大部分都是实现Runnable接口的匿名类。</p>
+<h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>降低对象之间的耦合度。</li>
+<li>新的命令可以很容易地加入到系统中。</li>
+<li>可以比较容易地设计一个组合命令。</li>
+<li>调用同一方法实现不同的功能</li>
+</ol>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><p>使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个命令都需要设计一个具体命令类，因此某些系统可能需要大量具体命令类，这将影响命令模式的使用。<br>比如上面的PeopleBean的属性增加，Receiver针对PeopleBean一个属性一个执行方法，一个Command的实现可以调用Receiver的一个执行方法，由此得需要设计多少个具体命令类呀！！</p>
+<h2 id="组合模式-composite"><a href="#组合模式-composite" class="headerlink" title="组合模式(composite)"></a>组合模式(composite)</h2><p>又叫作部分-整体模式，它使我们树型结构的问题中，模糊了简单元素和复杂元素的概念，客户程序可以向处理简单元素一样来处理复杂元素,从而使得客户程序与复杂元素的内部结构解耦。 GoF在《设计模式》一书中这样定义组合模式：将对象组合成树形结构以表示“部分-整体”的层次结构。使得用户对单个对象和组合对象的使用具有一致性。<br><img src="http://belial.me/wp-content/uploads/2015/03/QQ截图20150318225518.png" alt="组合模式通用类图"></p>
+<h3 id="模式的使用场景-2"><a href="#模式的使用场景-2" class="headerlink" title="模式的使用场景"></a>模式的使用场景</h3><ul>
+<li>表示对象的部分-整体层次结构。</li>
+<li>从一个整体中能够独立出部分模块或功能的场景。</li>
+</ul>
+<p>Adnroid系统中采用组合模式的组合视图类图。<br><img src="http://belial.me/wp-content/uploads/2015/03/QQ截图20150315115212.png" alt="enter image description here"></p>
+<p>使用组合模式组织起来的对象具有出色的层次结构，每当对顶层组合对象执行一个操作的时候，实际上是在对整个结构进行深度优先的节点搜索。但是这些优点都是用操作的代价换取的，比如顶级每执行一次 store.show 实际的操作就是整一颗树形结构的节点均遍历执行一次。</p>
+<h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>不破坏封装，整体类与局部类之间松耦合，彼此相对独立 。</li>
+<li>具有较好的可扩展性。</li>
+<li>支持动态组合。在运行时，整体对象可以选择不同类型的局部对象。</li>
+<li>整体类可以对局部类进行包装，封装局部类的接口，提供新的接口。</li>
+</ul>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>整体类不能自动获得和局部类同样的接口。</li>
+<li>创建整体类的对象时，需要创建所有局部类的对象 。</li>
+</ul>
+<h2 id="工厂方法模式-factory-method-TODO-没完"><a href="#工厂方法模式-factory-method-TODO-没完" class="headerlink" title="工厂方法模式(factory method)(TODO 没完)"></a>工厂方法模式(factory method)(TODO 没完)</h2><p>你要什么工厂造给你就是了，你不用管我是怎么造的，造好你拿去用就是了，奏是介么任性。任何需要生成对象的情况都可使用工厂方法替代生成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 果农类</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Grower</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Fruits&gt; <span class="function">T <span class="title">getFruits</span><span class="params">(Class&lt;T&gt; clz)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Fruits fruits = (Fruits) Class.forName(clz.getName()).newInstance();</span><br><span class="line">			<span class="keyword">return</span> (T) fruits;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简单工厂模式</li>
+<li>抽象工厂模式</li>
+<li>工厂方法模式</li>
+</ul>
+<h2 id="享元模式-flyweight"><a href="#享元模式-flyweight" class="headerlink" title="享元模式(flyweight)"></a>享元模式(flyweight)</h2><p>通过共享有效支持大量的细粒度对象，节省系统中重复创建相同内容对象的性能消耗，进而提高应用程序的性能。<br>享元模式可分为单纯享元模式和复合享元模式。</p>
+<h3 id="模式的使用场景-3"><a href="#模式的使用场景-3" class="headerlink" title="模式的使用场景"></a>模式的使用场景</h3><p>面向对象编程在某些情况下会创建大量的细粒度对象，它们的产生，存储，销毁都会造成资源和性能上的损耗，可能会在程序运行时形成效率瓶颈，在遇到以下情况时，即可考虑使用享元模式：</p>
+<ol>
+<li>一个应用程序使用了大量的对象，耗费大量的内存，降低了系统的效率。</li>
+<li>这些对象的状态可以分离出内外两部分。</li>
+<li>这些对象按照状态分成很多的组，当把删除对象的外部状态时，可以用相对较少的共享对象取代很多组对象。 </li>
+<li>应用程序不依赖这些对象的身份，即这些对象是不可分辨的。</li>
+</ol>
+<p>在一般的开发中享元模式并不常用，其常常应用于系统底层的开发，以便解决系统的性能问题。</p>
+<p>将事物的共性共享，同时又保留它的个性。为了做到这点，享元模式中区分了内蕴状态(Internal State)和外蕴状态(External State)。内蕴状态就是共性，外蕴状态就是个性了。内蕴状态存储在享元内部，不会随环境改变而变化，是可以共享的；外蕴状态是不可以共享的，它随环境的改变而变化，通常外蕴状态是由客户端来保持的（因为环境的变化是由客户端引起的）。</p>
+<h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>大幅度地降低内存中对象的数量，节省系统资源的开销<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4></li>
+<li>为了使对象可以共享，享元模式需要将部分状态外部化，使得系统的逻辑变得复杂。</li>
+<li>读取状态外部化的享元对象，影响了系统速度，使运行时间有所加长。</li>
+</ul>
+<h2 id="迭代器模式-Iterator"><a href="#迭代器模式-Iterator" class="headerlink" title="迭代器模式(Iterator)"></a>迭代器模式(Iterator)</h2><p>迭代器（Iterator）模式，又叫做游标（Cursor）模式。GOF给出的定义为：提供一种方法访问一个容器（container）对象中各个元素，而又不需暴露该对象的内部细节。</p>
+<p>对Android来说,集合Collection实现了Iterable接口,就是说,无论是List的一大家子还是Map的一大家子,我们都可以使用Iterator来遍历里面的元素。</p>
+<p>一个集合想要实现Iterator很是很简单的,需要注意的是每次需要重新生成一个Iterator来进行遍历.且遍历过程是单方向的,HashMap是通过一个类似HashIterator来实现的。</p>
+<h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>面向对象设计原则中的单一职责原则，对于不同的功能,我们要尽可能的把这个功能分解出单一的职责，不同的类去承担不同的职责。Iterator模式就是分离了集合对象的遍历行为，抽象出一个迭代器类来负责，这样不暴露集合的内部结构，又可让外部代码透明的访问集合内部的数据。</li>
+</ul>
+<h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>会产生多余的对象，消耗内存；</li>
+<li>遍历过程是一个单向且不可逆的遍历</li>
+<li>如果你在遍历的过程中,集合发生改变,变多变少,内容变化都是算,就会抛出来ConcurrentModificationException异常.</li>
+</ul>
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p>用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。</p>
+<h3 id="模式的使用场景-4"><a href="#模式的使用场景-4" class="headerlink" title="模式的使用场景"></a>模式的使用场景</h3><ol>
+<li>类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等，通过原型拷贝避免这些消耗；</li>
+<li>通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式；</li>
+<li>一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用，即保护性拷贝。 </li>
+</ol>
+<p>在Android源码中，以熟悉的Intent来分析源码中的原型模式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Intent(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为深拷贝，重新生成了对象，而不是浅拷贝(直接复制引用)</p>
+<h4 id="优点-8"><a href="#优点-8" class="headerlink" title="优点"></a>优点</h4><p>原型模式是在内存二进制流的拷贝，要比直接 new 一个对象性能好很多，特别是要在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</p>
+<h4 id="缺点-7"><a href="#缺点-7" class="headerlink" title="缺点"></a>缺点</h4><p>这既是它的优点也是缺点，直接在内存中拷贝，构造函数是不会执行的，在实际开发当中应该注意这个潜在的问题。优点就是减少了约束，缺点也是减少了约束，需要大家在实际应用时考虑。</p>
+<h2 id="代理模式-proxy"><a href="#代理模式-proxy" class="headerlink" title="代理模式(proxy)"></a>代理模式(proxy)</h2><p>代理模式给某一个对象提供一个代理对象，并由代理对象控制对原对象的引用。</p>
+<p>直观来说，Binder是Android中的一个类，它继承了IBinder接口。从IPC角度来说，Binder是Android中的一种跨进程通信方式，Binder还可以理解为一种虚拟的物理设备，它的设备驱动是/dev/binder，该通信方式在linux中没有；从Android Framework角度来说，Binder是ServiceManager连接各种Manager（ActivityManager、WindowManager，etc）和相应ManagerService的桥梁；从Android应用层来说，Binder是客户端和服务端进行通信的媒介，当你bindService的时候，服务端会返回一个包含了服务端业务调用的Binder对象，通过这个Binder对象，客户端就可以获取服务端提供的服务或者数据，这里的服务包括普通服务和基于AIDL的服务。</p>
+<p>Binder一个很重要的作用是：将客户端的请求参数通过Parcel包装后传到远程服务端，远程服务端解析数据并执行对应的操作，同时客户端线程挂起，当服务端方法执行完毕后，再将返回结果写入到另外一个Parcel中并将其通过Binder传回到客户端，客户端接收到返回数据的Parcel后，Binder会解析数据包中的内容并将原始结果返回给客户端，至此，整个Binder的工作过程就完成了。由此可见，Binder更像一个数据通道，Parcel对象就在这个通道中跨进程传输，至于双方如何通信，这并不负责，只需要双方按照约定好的规范去打包和解包数据即可。</p>
+<h4 id="优点-9"><a href="#优点-9" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>给对象增加了本地化的扩展性，增加了存取操作控制</li>
+</ul>
+<h4 id="缺点-8"><a href="#缺点-8" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>会产生多余的代理类</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/14/Android-安全/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 安全</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android中的设计模式" data-title="android中的设计模式" data-url="http://lcodecorex.github.io/2016/03/15/android中的设计模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lcodecore"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 超歌
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
