@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Android静态代码检测 | Oscar Blog</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Android静态代码检测</h1><a id="logo" href="/.">Oscar Blog</a><p class="description">成长就是学会忍受孤寂，学会自寻乐趣。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Android静态代码检测</h1><div class="post-meta">Aug 1, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2016/08/01/Android静态代码检查20160720/" href="/2016/08/01/Android静态代码检查20160720/#comments" class="ds-thread-count"></a><a data-disqus-identifier="2016/08/01/Android静态代码检查20160720/" href="/2016/08/01/Android静态代码检查20160720/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>静态代码检测即不涉及代码运行的代码检测过程，其目的是为了发现代码潜在的缺陷和优化改进项，以保障代码的规范性，及时发现表面层次上的bug，防止低级错误的出现。下面简单介绍常用的进行代码质量检测的工具。</p>
+<h3 id="1-lint工具"><a href="#1-lint工具" class="headerlink" title="1.lint工具"></a>1.lint工具</h3><p>可以检测：</p>
+<ul>
+<li>布局性能</li>
+<li>未使用到的资源或缺少的资源</li>
+<li>国际化问题</li>
+<li>图标的问题</li>
+<li><p>manifest文件的错误</p>
+<p><img src="http://cs.szpt.edu.cn/android/images/tools/lint.png" alt=""></p>
+</li>
+</ul>
+<ol>
+<li>在项目目录执行命令gradle lint，则会在项目目录/app/build/outputs/lint-results-debug.html文件，可以用浏览器打开查看。</li>
+<li><p>另一种方式是在AS里面projects下选择Analyze -&gt; InspectCode，则会将xml以图形化的方式显示。<br>在Preferences -&gt; Editor -&gt; Inspections下可以自定义Android Lint的检查提示，如需要设置TextSize为dp时以错误显示，则找到相关设置将Severity改为Error即可。</p>
+<p><img src="https://mss.sankuai.com/v1/mss_814dc1610cda4b2e8febd6ea2c809db5/image/1468988000592.png" alt=""></p>
+</li>
+</ol>
+<p>代码中禁用Lint的方式：</p>
+<ol>
+<li>xml文件: tools:ignore=<code>[UnusedResources/NewApi/all]</code></li>
+<li>java代码中：@SuppressLint(<code>[NewApi/all]</code>)</li>
+</ol>
+<hr>
+<h3 id="2-findBugs"><a href="#2-findBugs" class="headerlink" title="2.findBugs"></a>2.findBugs</h3><ul>
+<li>常见代码错误，序列化错误</li>
+<li>可能导致错误的代码，如空指针引用</li>
+<li>国际化相关问题：如错误的字符串转换</li>
+<li>可能受到的恶意攻击，如访问权限修饰符的定义等</li>
+<li>多线程的正确性：如多线程编程时常见的同步，线程调度问题。</li>
+<li>运行时性能问题：如由变量定义，方法调用导致的代码低效问题。</li>
+</ul>
+<p>安装findBugs这个plugin，在项目菜单中可以找到findBugs</p>
+<ol>
+<li>添加plugin   <code>apply plugin:&#39;findbugs&#39;</code></li>
+<li>定义任务，指定输格式<pre><code>task findbugs(type: FindBugs) {
+      ignoreFailures = true
+      classes = fileTree(&apos;build/intermediates/classes/debug&apos;)
+      source = fileTree(&apos;src&apos;)
+      classpath = files()
+      effort = &apos;max&apos;
+      reports {
+          xml.enabled = false
+          html.enabled = true
+        }
+   }    
+</code></pre></li>
+</ol>
+<hr>
+<h3 id="3-Checkstyle"><a href="#3-Checkstyle" class="headerlink" title="3.Checkstyle"></a>3.Checkstyle</h3><ul>
+<li>Javadoc注释</li>
+<li>命名约定，代码规范</li>
+<li><p>类设计等</p>
+<p>它定义了一系列可用的模块，每一个模块提供了严格程度(强制的，可选的…)可配置的检查规则。规则可以触发通知(notification)，警告(warning)和错误(error)。是定制在团队开发中遵守某些编码规范的工具。<br>使用：</p>
+</li>
+</ul>
+<ol>
+<li>添加plugin   <code>apply plugin:&#39;checkstyle&#39;</code></li>
+<li>设置CheckStyle版本<pre><code>checkstyle {
+    toolVersion &apos;6.1.1&apos;
+    showViolations true
+}    
+</code></pre></li>
+<li><p>设置配置文件，定义规范</p>
+<pre><code>check.dependsOn &apos;checkstyle&apos;
+
+task checkstyle(type: Checkstyle) {
+     source &apos;src&apos;
+     configFile file(&quot;config/checkstyle.xml&quot;)
+     include &apos;**/*.java&apos;
+     exclude &apos;**/gen/**&apos;
+     ignoreFailures true
+
+     classpath = files()
+}
+</code></pre></li>
+</ol>
+<p>规范也可在Preferences -&gt; Editor -&gt; Java 下制定/导入/导出以供使用</p>
+<p> <img src="https://mss.sankuai.com/v1/mss_814dc1610cda4b2e8febd6ea2c809db5/image/1468988087626.png" alt=""></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/08/01/Android静态代码检查20160720/" data-id="cis34p9ww0009hp5oban7mmo2" class="article-share-link">分享到</a><div class="tags"></div><div class="post-nav"><a href="/2016/08/01/Android网络请求实现及okhttp源码浅析/" class="pre">Android网络请求实现与okhttp源码浅析</a><a href="/2016/08/01/文件分片与断点续传原理与具体实现/" class="next">文件分片与断点续传原理与具体实现</a></div><div data-thread-key="2016/08/01/Android静态代码检查20160720/" data-title="Android静态代码检测" data-url="http://yoursite.com/2016/08/01/Android静态代码检查20160720/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/08/01/Android静态代码检查20160720/" data-title="Android静态代码检测" data-url="http://yoursite.com/2016/08/01/Android静态代码检查20160720/" data-author-key="1" class="ds-thread"></div><div id="disqus_thread"><script>var disqus_shortname = 'lcodecore';
+var disqus_identifier = '2016/08/01/Android静态代码检查20160720/';
+var disqus_title = 'Android静态代码检测';
+var disqus_url = 'http://yoursite.com/2016/08/01/Android静态代码检查20160720/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//lcodecore.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JNI/" style="font-size: 15px;">JNI</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/响应式编程/" style="font-size: 15px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 15px;">求职</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android插件化/">Android应用插件化原理与实现（待续）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android热补丁动态修复HotFix/">Android热补丁动态修复技术Hotfix</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/adapter深入理解学习/">Adapter学习与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/Android代码混淆详解/">Android代码混淆详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/Android SQLite操作性能优化办法(参考GreenDao)/">Android SQLite操作性能优化办法-参考GreenDao</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/SQL学习/">SQL学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Android应用差分更新工具bsdiff/">Android应用差分更新工具bsdiff</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Glide源码分析0721/">Android图片加载框架Glide源码浅析TODO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android网络请求实现及okhttp源码浅析/">Android网络请求实现与okhttp源码浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android静态代码检查20160720/">Android静态代码检测</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//lcodecore.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/lcodecorex" title="github" target="_blank">github</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Oscar Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'超歌'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

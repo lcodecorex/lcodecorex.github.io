@@ -1,224 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Android Studio2.0 JNI 开发 | 超歌的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言在当前Android性能不断提高的情况下，Java语言的一些缺陷逐渐被掩盖起来。什么时候使用NDK呢？
-当设计的算法要利用Dalvik虚拟机中的所有处理器资源，而且原生运行较为有利，或者你希望的操作拥有尽可能快的处理速度时，就需要使用NDK。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android Studio2.0 JNI 开发">
-<meta property="og:url" content="http://lcodecorex.github.io/2016/03/03/Android JNI 开发/index.html">
-<meta property="og:site_name" content="超歌的博客">
-<meta property="og:description" content="前言在当前Android性能不断提高的情况下，Java语言的一些缺陷逐渐被掩盖起来。什么时候使用NDK呢？
-当设计的算法要利用Dalvik虚拟机中的所有处理器资源，而且原生运行较为有利，或者你希望的操作拥有尽可能快的处理速度时，就需要使用NDK。">
-<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/ndk_set.png">
-<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/as_ndk_set.png">
-<meta property="og:updated_time" content="2016-03-03T13:32:05.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Studio2.0 JNI 开发">
-<meta name="twitter:description" content="前言在当前Android性能不断提高的情况下，Java语言的一些缺陷逐渐被掩盖起来。什么时候使用NDK呢？
-当设计的算法要利用Dalvik虚拟机中的所有处理器资源，而且原生运行较为有利，或者你希望的操作拥有尽可能快的处理速度时，就需要使用NDK。">
-<meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/ndk_set.png">
-  
-    <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?0b8e8ee87e4708173f00d9048c309301";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-  </script>
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/assets/blogImg/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">超歌</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/instagram">相册</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">西安电子科大学13级，热衷于android开发和新酷技术！</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">超歌</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="/assets/blogImg/avatar.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">超歌</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/instagram">相册</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-Android JNI 开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/03/Android JNI 开发/" class="article-date">
-  	<time datetime="2016-03-03T13:30:39.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Android Studio2.0 JNI 开发
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JNI/">JNI</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在当前Android性能不断提高的情况下，Java语言的一些缺陷逐渐被掩盖起来。什么时候使用NDK呢？</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Android Studio2.0 JNI 开发 | Oscar Blog</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Android Studio2.0 JNI 开发</h1><a id="logo" href="/.">Oscar Blog</a><p class="description">成长就是学会忍受孤寂，学会自寻乐趣。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Android Studio2.0 JNI 开发</h1><div class="post-meta">Mar 3, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2016/03/03/Android JNI 开发/" href="/2016/03/03/Android JNI 开发/#comments" class="ds-thread-count"></a><a data-disqus-identifier="2016/03/03/Android JNI 开发/" href="/2016/03/03/Android JNI 开发/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在当前Android性能不断提高的情况下，Java语言的一些缺陷逐渐被掩盖起来。什么时候使用NDK呢？</p>
 <p>当设计的算法要利用Dalvik虚拟机中的所有处理器资源，而且原生运行较为有利，或者你希望的操作拥有尽可能快的处理速度时，就需要使用NDK。</p>
 <a id="more"></a>
 <p>另一个原因则是方便移植，特别对于OpenGL ES应用程序。</p>
@@ -250,38 +30,38 @@ export PATH=${PATH}:$NDK_ROOT
 <p><img src="/assets/blogImg/as_ndk_set.png" alt="as ndk配置"></p>
 <p>若出现<code>NDK integration is deprecated in the current plugin</code>问题，在 gradle.properties 中配置 <strong>android.useDeprecatedNdk=true</strong> 即可。as2.0已支持<code>ctrl + 点击</code>跳转到本地方法的定义c函数，没有定义过的方法也会高亮显示,还能自动导包。还在用eclipse的童鞋，you are drunk!都什么年代了。然后可以运行了。</p>
 <h2 id="开动学习啦"><a href="#开动学习啦" class="headerlink" title="开动学习啦"></a>开动学习啦</h2><h3 id="1-build-gradle配置，mk文件配置"><a href="#1-build-gradle配置，mk文件配置" class="headerlink" title="1.build.gradle配置，mk文件配置"></a>1.build.gradle配置，mk文件配置</h3><p>先看app目录下面的build.gradle文件，需要配置jni模块名：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">ndk</span> &#123;</span><br><span class="line">         <span class="attribute">moduleName</span> <span class="string">"hello-jni"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="section">ndk</span> &#123;</div><div class="line">         <span class="attribute">moduleName</span> <span class="string">"hello-jni"</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>实际还有更多可以配置</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">ndk </span>&#123;  </span><br><span class="line">  moduleName <span class="string">"hello-jni"</span>  <span class="comment">//模块名</span></span><br><span class="line">  cFlags <span class="string">"-DANDROID_NDK -D_DEBUG DNULL=0"</span>   <span class="comment">// 定义一些宏指令（macros） </span></span><br><span class="line">  ldLibs <span class="string">"EGL"</span>, <span class="string">"GLESv3"</span>, <span class="string">"dl"</span>, <span class="string">"log"</span>       <span class="comment">//  在这里添加你原先在makefile里ldlibs所链接的库</span></span><br><span class="line">  stl <span class="string">"stlport_shared"</span>                      <span class="comment">// 使用 shared stlport library</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class">ndk </span>&#123;  </div><div class="line">  moduleName <span class="string">"hello-jni"</span>  <span class="comment">//模块名</span></div><div class="line">  cFlags <span class="string">"-DANDROID_NDK -D_DEBUG DNULL=0"</span>   <span class="comment">// 定义一些宏指令（macros） </span></div><div class="line">  ldLibs <span class="string">"EGL"</span>, <span class="string">"GLESv3"</span>, <span class="string">"dl"</span>, <span class="string">"log"</span>       <span class="comment">//  在这里添加你原先在makefile里ldlibs所链接的库</span></div><div class="line">  stl <span class="string">"stlport_shared"</span>                      <span class="comment">// 使用 shared stlport library</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="2-增加一个sayHello-方法"><a href="#2-增加一个sayHello-方法" class="headerlink" title="2.增加一个sayHello()方法"></a>2.增加一个sayHello()方法</h3><p>1.在hello-jni.c 中增加如下代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">jstring <span class="title">Java_com_example_hellojni_HelloJni_sayHello</span><span class="params">(JNIEnv *env,jobject thiz)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env,<span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function">jstring <span class="title">Java_com_example_hellojni_HelloJni_sayHello</span><span class="params">(JNIEnv *env,jobject thiz)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env,<span class="string">"hello world"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>应该注意开头的<code>J</code>字要大写，随后的为包名<em>类名</em>本地方法名</p>
 <p>2.然后在HelloJni.java中写上该方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">sayHello</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">sayHello</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
 <p>然后就可以调用了。其中使用了闭包来导入了编译好的.so文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        System.loadLibrary(<span class="string">"hello-jni"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"hello-jni"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>3.或可以使用javah命令直接生成native c头文件<br>进入到hello-jni/app/src/main/java 目录，执行</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javah -d ../jni com<span class="selector-class">.example</span><span class="selector-class">.hellojni</span><span class="selector-class">.HelloJni</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javah -d ../jni com<span class="selector-class">.example</span><span class="selector-class">.hellojni</span><span class="selector-class">.HelloJni</span></div></pre></td></tr></table></figure>
 <p>即可生成头文件。</p>
 <p>4.运行时as2.0需要关闭<code>instant-run</code>的功能，否则会出现.so文件找不到的错误。c文件的编译也不需要我们费心了，as自动会编译好。</p>
 <h3 id="3-C调用Java代码"><a href="#3-C调用Java代码" class="headerlink" title="3.C调用Java代码"></a>3.C调用Java代码</h3><h4 id="C调用logcat打印日志"><a href="#C调用logcat打印日志" class="headerlink" title="C调用logcat打印日志"></a>C调用logcat打印日志</h4><ul>
 <li>1.修改build.gradle里ndk节点的内容：</li>
 </ul>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">ndk </span>&#123;</span><br><span class="line">    moduleName <span class="string">"HelloJNI"</span></span><br><span class="line">    stl <span class="string">"stlport_static"</span> <span class="comment">//单步调试支持</span></span><br><span class="line">    ldLibs <span class="string">"log"</span>   <span class="comment">//添加c调用logcat打印日志的支持库</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class">ndk </span>&#123;</div><div class="line">    moduleName <span class="string">"HelloJNI"</span></div><div class="line">    stl <span class="string">"stlport_static"</span> <span class="comment">//单步调试支持</span></div><div class="line">    ldLibs <span class="string">"log"</span>   <span class="comment">//添加c调用logcat打印日志的支持库</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后添加以下代码到buildTypes下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">debug</span> &#123;</span><br><span class="line">    <span class="attribute">jniDebuggable</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="section">debug</span> &#123;</div><div class="line">    <span class="attribute">jniDebuggable</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>2.引入头文件 <code>#include&lt;android/log.h&gt;</code>,其中包含<code>__android_log_print()</code>方法，为方便使用做个宏定义：</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/log.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_TAG <span class="string">"clog"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__);</span></span><br><span class="line"><span class="comment">//参数prio在头文件的android_LogPriority枚举中选择</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/log.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_TAG <span class="meta-string">"clog"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__);</span></div><div class="line"><span class="comment">//参数prio在头文件的android_LogPriority枚举中选择</span></div></pre></td></tr></table></figure>
 <h4 id="c操作java字符串"><a href="#c操作java字符串" class="headerlink" title="c操作java字符串"></a>c操作java字符串</h4><p>c中没有string类型，故须将java字符串转化为c语言的char数组</p>
-<h4 id="c操作java数组"><a href="#c操作java数组" class="headerlink" title="c操作java数组"></a>c操作java数组</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> length=(*env)-&gt;getArrayLength(env,jarray);</span><br><span class="line"><span class="keyword">int</span>* <span class="built_in">array</span>=(*env)-&gt;getIntArrayElements(env,jarray,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//对该数组进行操作，实际操作的都是传进来的jarray,直接返回即可</span></span><br></pre></td></tr></table></figure>
+<h4 id="c操作java数组"><a href="#c操作java数组" class="headerlink" title="c操作java数组"></a>c操作java数组</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> length=(*env)-&gt;getArrayLength(env,jarray);</div><div class="line"><span class="keyword">int</span>* <span class="built_in">array</span>=(*env)-&gt;getIntArrayElements(env,jarray,<span class="number">0</span>);</div><div class="line"><span class="comment">//对该数组进行操作，实际操作的都是传进来的jarray,直接返回即可</span></div></pre></td></tr></table></figure>
 <h3 id="4-c代码调用java代码"><a href="#4-c代码调用java代码" class="headerlink" title="4.c代码调用java代码"></a>4.c代码调用java代码</h3><p>1.调用自己的方法。env参数指向java虚拟机环境，jobject指向本对象</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取类的字节码文件  </span></span><br><span class="line">jclass clazz = (*env)-&gt;FindClass(env,<span class="string">"com/example/MainActivity"</span>);</span><br><span class="line"><span class="comment">//获取方法签名、参数和返回值,可使用javap命令获取方法签名</span></span><br><span class="line">jmethodID methodId=(*env)-&gt;GetMethodID(env,clazz,<span class="string">"helloFromJava"</span>,<span class="string">"()V"</span>);</span><br><span class="line">(*env)-&gt;CallVoidMethod(env,jobject,methodId);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取类的字节码文件  </span></div><div class="line">jclass clazz = (*env)-&gt;FindClass(env,<span class="string">"com/example/MainActivity"</span>);</div><div class="line"><span class="comment">//获取方法签名、参数和返回值,可使用javap命令获取方法签名</span></div><div class="line">jmethodID methodId=(*env)-&gt;GetMethodID(env,clazz,<span class="string">"helloFromJava"</span>,<span class="string">"()V"</span>);</div><div class="line">(*env)-&gt;CallVoidMethod(env,jobject,methodId);</div></pre></td></tr></table></figure>
 <p>2.当在本对象里调用其它类的方法时，需要创建那个类的对象，方法如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jobject obj=(*env)-&gt;AllocObject(env,clazz);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jobject obj=(*env)-&gt;AllocObject(env,clazz);</div></pre></td></tr></table></figure>
 <p>3.调用静态方法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmethodID methodId=(*env)-&gt;GetStaticMethodID(env,clazz,<span class="string">"methodname"</span>,<span class="string">"()V"</span>);</span><br><span class="line">(*env)-&gt;CallStaticVoidMethod(clazz,methodId);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jmethodID methodId=(*env)-&gt;GetStaticMethodID(env,clazz,<span class="string">"methodname"</span>,<span class="string">"()V"</span>);</div><div class="line">(*env)-&gt;CallStaticVoidMethod(clazz,methodId);</div></pre></td></tr></table></figure>
 <h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><h3 id="java方法签名"><a href="#java方法签名" class="headerlink" title="java方法签名"></a>java方法签名</h3><h3 id="java和c的比较"><a href="#java和c的比较" class="headerlink" title="java和c的比较"></a>java和c的比较</h3><table>
 <thead>
 <tr>
@@ -353,119 +133,31 @@ export PATH=${PATH}:$NDK_ROOT
 </blockquote>
 </li>
 <li><p>函数指针</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*pf)(<span class="keyword">int</span> x,<span class="keyword">int</span> y);</span><br><span class="line">pf = add;</span><br><span class="line">pf(x,y);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> (*pf)(<span class="keyword">int</span> x,<span class="keyword">int</span> y);</div><div class="line">pf = add;</div><div class="line">pf(x,y);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>–<br>学习中…</p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/03/05/Android客户端跟服务器交互的安全问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Android客户端跟服务器交互的安全问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/03/03/RxJava-RxAndroid简用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RxJava/RxAndroid响应式编程框架简析</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Android JNI 开发" data-title="Android Studio2.0 JNI 开发" data-url="http://lcodecorex.github.io/2016/03/03/Android JNI 开发/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"lcodecore"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 超歌
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
-      	</div>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: undefined,
-		animate: undefined,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: undefined
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </div>
-</body>
-</html>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/03/03/Android JNI 开发/" data-id="cis34qcql0000hw5o0ktkxxch" class="article-share-link">分享到</a><div class="tags"><a href="/tags/JNI/">JNI</a></div><div class="post-nav"><a href="/2016/03/05/Android客户端跟服务器交互的安全问题（待续）/" class="pre">Android客户端跟服务器交互的安全问题（待续）</a><a href="/2016/03/03/RxJava-RxAndroid简用TODO/" class="next">RxJava/RxAndroid响应式编程框架简析</a></div><div data-thread-key="2016/03/03/Android JNI 开发/" data-title="Android Studio2.0 JNI 开发" data-url="http://yoursite.com/2016/03/03/Android JNI 开发/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/03/Android JNI 开发/" data-title="Android Studio2.0 JNI 开发" data-url="http://yoursite.com/2016/03/03/Android JNI 开发/" data-author-key="1" class="ds-thread"></div><div id="disqus_thread"><script>var disqus_shortname = 'lcodecore';
+var disqus_identifier = '2016/03/03/Android JNI 开发/';
+var disqus_title = 'Android Studio2.0 JNI 开发';
+var disqus_url = 'http://yoursite.com/2016/03/03/Android JNI 开发/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//lcodecore.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JNI/" style="font-size: 15px;">JNI</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/响应式编程/" style="font-size: 15px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 15px;">求职</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android插件化/">Android应用插件化原理与实现（待续）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android热补丁动态修复HotFix/">Android热补丁动态修复技术Hotfix</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/adapter深入理解学习/">Adapter学习与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/Android代码混淆详解/">Android代码混淆详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/Android SQLite操作性能优化办法(参考GreenDao)/">Android SQLite操作性能优化办法-参考GreenDao</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/SQL学习/">SQL学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Android应用差分更新工具bsdiff/">Android应用差分更新工具bsdiff</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Glide源码分析0721/">Android图片加载框架Glide源码浅析TODO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android网络请求实现及okhttp源码浅析/">Android网络请求实现与okhttp源码浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android静态代码检查20160720/">Android静态代码检测</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//lcodecore.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/lcodecorex" title="github" target="_blank">github</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Oscar Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'超歌'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

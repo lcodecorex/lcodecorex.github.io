@@ -1,224 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>数据结构与算法学习 | 超歌的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构与算法学习">
-<meta property="og:url" content="http://lcodecorex.github.io/2016/03/01/数据结构与算法学习/index.html">
-<meta property="og:site_name" content="超歌的博客">
-<meta property="og:description" content="链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素">
-<meta property="og:updated_time" content="2016-03-02T13:14:10.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构与算法学习">
-<meta name="twitter:description" content="链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素">
-  
-    <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?0b8e8ee87e4708173f00d9048c309301";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-  </script>
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/assets/blogImg/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">超歌</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/instagram">相册</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">西安电子科大学13级，热衷于android开发和新酷技术！</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">超歌</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="/assets/blogImg/avatar.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">超歌</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/instagram">相册</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-数据结构与算法学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/01/数据结构与算法学习/" class="article-date">
-  	<time datetime="2016-03-01T14:58:39.000Z" itemprop="datePublished">Mar 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      数据结构与算法学习
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>数据结构与算法学习 | Oscar Blog</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">数据结构与算法学习</h1><a id="logo" href="/.">Oscar Blog</a><p class="description">成长就是学会忍受孤寂，学会自寻乐趣。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">数据结构与算法学习</h1><div class="post-meta">Mar 1, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2016/03/01/数据结构与算法学习/" href="/2016/03/01/数据结构与算法学习/#comments" class="ds-thread-count"></a><a data-disqus-identifier="2016/03/01/数据结构与算法学习/" href="/2016/03/01/数据结构与算法学习/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><ul>
 <li>链式存储结构 －－ 线性表插入时，中间留有内存地址都有可能应为地址不够或者造成浪费。解决办法是每个元素多用一个位置来存放指向下一个元素位置的指针，这样各个元素都可以找到下一个元素<a id="more"></a>   
 <pre><code>链表中第一个结点的存储位置叫头指针，最后一个结点指针为空。
 头结点放在第一个元素的结点之前，其数据域一般无意义(为操作的统一和方便而设立)，头指针指向头结点
 </code></pre></li>
 </ul>
-<h4 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int notDanger(int row,int j,int (*chess)[8])&#123;</span><br><span class="line">  int i,k,flag1=0,flag2=0,flag3=0,flag4=0,flag5=0;</span><br><span class="line">  //判断列方向</span><br><span class="line">  for(i;i&lt;8;i++)&#123;</span><br><span class="line">    if(*(*(chess+i)+j)!=0)&#123;</span><br><span class="line">      flag1 = 1;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //判断左上方</span><br><span class="line">  for(i=row,k=j;i&gt;=0&amp;&amp;k&gt;=0;i--,k--)&#123;</span><br><span class="line">    if (*(*(chess+i)+k)!=0) &#123;</span><br><span class="line">      flag2=1;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //判断右下方</span><br><span class="line">  for(i=row,k=j;i&lt;8&amp;&amp;k&lt;8;i++,k++)&#123;</span><br><span class="line">    if (*(*(chess+i)+k)!=0) &#123;</span><br><span class="line">      flag3=1;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //判断右上方</span><br><span class="line">  for(i=row,k=j;i&gt;=0&amp;&amp;k&lt;8;i--,k++)&#123;</span><br><span class="line">    if (*(*(chess+i)+k)!=0) &#123;</span><br><span class="line">      flag4=1;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //判断左下方</span><br><span class="line">  for(i=row,k=j;i&lt;8&amp;&amp;k&gt;=0;i++,k--)&#123;</span><br><span class="line">    if (*(*(chess+i)+k)!=0) &#123;</span><br><span class="line">      flag5=1;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if(flag1||flag2||flag3||flag4||flag5)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int count=0;</span><br><span class="line">void eightQueen(int row,int n,int (*chess)[0])&#123;</span><br><span class="line">  int chess2[8][8],i,j;</span><br><span class="line"></span><br><span class="line">  for(i=0;i&lt;8;i++)&#123;</span><br><span class="line"> 		for(j=0;j&lt;8;j++)&#123;</span><br><span class="line"> 			chess2[i][j] = 0; //初始化赋0</span><br><span class="line"> 		&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line">  if (0==row) &#123;</span><br><span class="line">    printf("第%d种\n", count+=1);</span><br><span class="line">    for(i=0;i&lt;8;i++)&#123;</span><br><span class="line">   		for(j=0;j&lt;8;j++)&#123;</span><br><span class="line">   			printf("%d  ",  *(*(chess2+i)+j));</span><br><span class="line">   		&#125;</span><br><span class="line">      printf("\n");</span><br><span class="line">   	&#125;</span><br><span class="line">    printf("\n");</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    for(j=0;j&lt;n;j++)&#123;</span><br><span class="line">      if (notDanger(row,j,chess)) &#123;//判断是否危险</span><br><span class="line">        for(i=0;i&lt;8;i++)&#123;</span><br><span class="line">          *(*(chess2+row)+i)=0;</span><br><span class="line">        &#125;</span><br><span class="line">        *(*(chess2+row)+i)=1;</span><br><span class="line">        eightQueen(row+1,n,chess2);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> int main()&#123;</span><br><span class="line"> 	int chess[8][8],i,j;</span><br><span class="line"> 	for(i=0;i&lt;8;i++)&#123;</span><br><span class="line"> 		for(j=0;j&lt;8;j++)&#123;</span><br><span class="line"> 			chess[i][j] = 0; //初始化赋0</span><br><span class="line"> 		&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line">  eightQueen(8,8,chess);</span><br><span class="line">  printf("总共有%d种解决办法\n", count);</span><br><span class="line">  return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">int notDanger(int row,int j,int (*chess)[8])&#123;</div><div class="line">  int i,k,flag1=0,flag2=0,flag3=0,flag4=0,flag5=0;</div><div class="line">  //判断列方向</div><div class="line">  for(i;i&lt;8;i++)&#123;</div><div class="line">    if(*(*(chess+i)+j)!=0)&#123;</div><div class="line">      flag1 = 1;</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //判断左上方</div><div class="line">  for(i=row,k=j;i&gt;=0&amp;&amp;k&gt;=0;i--,k--)&#123;</div><div class="line">    if (*(*(chess+i)+k)!=0) &#123;</div><div class="line">      flag2=1;</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //判断右下方</div><div class="line">  for(i=row,k=j;i&lt;8&amp;&amp;k&lt;8;i++,k++)&#123;</div><div class="line">    if (*(*(chess+i)+k)!=0) &#123;</div><div class="line">      flag3=1;</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //判断右上方</div><div class="line">  for(i=row,k=j;i&gt;=0&amp;&amp;k&lt;8;i--,k++)&#123;</div><div class="line">    if (*(*(chess+i)+k)!=0) &#123;</div><div class="line">      flag4=1;</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //判断左下方</div><div class="line">  for(i=row,k=j;i&lt;8&amp;&amp;k&gt;=0;i++,k--)&#123;</div><div class="line">    if (*(*(chess+i)+k)!=0) &#123;</div><div class="line">      flag5=1;</div><div class="line">      break;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  if(flag1||flag2||flag3||flag4||flag5)&#123;</div><div class="line">    return 0;</div><div class="line">  &#125;else&#123;</div><div class="line">    return 1;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">int count=0;</div><div class="line">void eightQueen(int row,int n,int (*chess)[0])&#123;</div><div class="line">  int chess2[8][8],i,j;</div><div class="line"></div><div class="line">  for(i=0;i&lt;8;i++)&#123;</div><div class="line"> 		for(j=0;j&lt;8;j++)&#123;</div><div class="line"> 			chess2[i][j] = 0; //初始化赋0</div><div class="line"> 		&#125;</div><div class="line"> 	&#125;</div><div class="line">  if (0==row) &#123;</div><div class="line">    printf("第%d种\n", count+=1);</div><div class="line">    for(i=0;i&lt;8;i++)&#123;</div><div class="line">   		for(j=0;j&lt;8;j++)&#123;</div><div class="line">   			printf("%d  ",  *(*(chess2+i)+j));</div><div class="line">   		&#125;</div><div class="line">      printf("\n");</div><div class="line">   	&#125;</div><div class="line">    printf("\n");</div><div class="line">  &#125;else&#123;</div><div class="line">    for(j=0;j&lt;n;j++)&#123;</div><div class="line">      if (notDanger(row,j,chess)) &#123;//判断是否危险</div><div class="line">        for(i=0;i&lt;8;i++)&#123;</div><div class="line">          *(*(chess2+row)+i)=0;</div><div class="line">        &#125;</div><div class="line">        *(*(chess2+row)+i)=1;</div><div class="line">        eightQueen(row+1,n,chess2);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> int main()&#123;</div><div class="line"> 	int chess[8][8],i,j;</div><div class="line"> 	for(i=0;i&lt;8;i++)&#123;</div><div class="line"> 		for(j=0;j&lt;8;j++)&#123;</div><div class="line"> 			chess[i][j] = 0; //初始化赋0</div><div class="line"> 		&#125;</div><div class="line"> 	&#125;</div><div class="line">  eightQueen(8,8,chess);</div><div class="line">  printf("总共有%d种解决办法\n", count);</div><div class="line">  return 0;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <h4 id="KMP算法－－回溯"><a href="#KMP算法－－回溯" class="headerlink" title="KMP算法－－回溯"></a>KMP算法－－回溯</h4><h4 id="二叉树-Binary-Tree"><a href="#二叉树-Binary-Tree" class="headerlink" title="二叉树 Binary Tree"></a>二叉树 Binary Tree</h4><p>不存在度大于2的结点，二叉树要区分左右，叶子深度相同</p>
 <ul>
 <li><p>特殊二叉树</p>
@@ -228,115 +14,27 @@
 </code></pre><p>–<br>学习中…</p>
 </li>
 </ul>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/03/01/属性动画-估值器/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          属性动画-估值器
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/03/01/Activity切换动效/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Activity切换动效</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="数据结构与算法学习" data-title="数据结构与算法学习" data-url="http://lcodecorex.github.io/2016/03/01/数据结构与算法学习/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"lcodecore"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 超歌
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
-      	</div>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: undefined,
-		animate: undefined,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: undefined
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </div>
-</body>
-</html>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/03/01/数据结构与算法学习/" data-id="cis34qcrq0015hw5oi9rikij0" class="article-share-link">分享到</a><div class="tags"><a href="/tags/学习/">学习</a></div><div class="post-nav"><a href="/2016/03/01/Android线程/" class="pre">Android线程学习</a><a href="/2016/03/01/自定义左右滑动卡片布局/" class="next">自定义不占满全屏可左右滑动的卡片</a></div><div data-thread-key="2016/03/01/数据结构与算法学习/" data-title="数据结构与算法学习" data-url="http://yoursite.com/2016/03/01/数据结构与算法学习/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/03/01/数据结构与算法学习/" data-title="数据结构与算法学习" data-url="http://yoursite.com/2016/03/01/数据结构与算法学习/" data-author-key="1" class="ds-thread"></div><div id="disqus_thread"><script>var disqus_shortname = 'lcodecore';
+var disqus_identifier = '2016/03/01/数据结构与算法学习/';
+var disqus_title = '数据结构与算法学习';
+var disqus_url = 'http://yoursite.com/2016/03/01/数据结构与算法学习/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//lcodecore.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JNI/" style="font-size: 15px;">JNI</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/响应式编程/" style="font-size: 15px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 15px;">求职</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android插件化/">Android应用插件化原理与实现（待续）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android热补丁动态修复HotFix/">Android热补丁动态修复技术Hotfix</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/adapter深入理解学习/">Adapter学习与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/Android代码混淆详解/">Android代码混淆详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/Android SQLite操作性能优化办法(参考GreenDao)/">Android SQLite操作性能优化办法-参考GreenDao</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/SQL学习/">SQL学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Android应用差分更新工具bsdiff/">Android应用差分更新工具bsdiff</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Glide源码分析0721/">Android图片加载框架Glide源码浅析TODO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android网络请求实现及okhttp源码浅析/">Android网络请求实现与okhttp源码浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android静态代码检查20160720/">Android静态代码检测</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//lcodecore.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/lcodecorex" title="github" target="_blank">github</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Oscar Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'超歌'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

@@ -1,234 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>我的Android学习笔记 | 超歌的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java学习日记(小知识杂记)1.代码可读性1scene.fight(hero,enemy,kongfu,FIST);">
-<meta property="og:type" content="article">
-<meta property="og:title" content="我的Android学习笔记">
-<meta property="og:url" content="http://lcodecorex.github.io/2015/11/18/android学习笔记/index.html">
-<meta property="og:site_name" content="超歌的博客">
-<meta property="og:description" content="java学习日记(小知识杂记)1.代码可读性1scene.fight(hero,enemy,kongfu,FIST);">
-<meta property="og:image" content="http://lcodecorex.github.io/assets/blogImg/fragment_live.png">
-<meta property="og:updated_time" content="2016-03-02T13:23:37.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的Android学习笔记">
-<meta name="twitter:description" content="java学习日记(小知识杂记)1.代码可读性1scene.fight(hero,enemy,kongfu,FIST);">
-<meta name="twitter:image" content="http://lcodecorex.github.io/assets/blogImg/fragment_live.png">
-  
-    <link rel="alternative" href="/atom.xml" title="超歌的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?0b8e8ee87e4708173f00d9048c309301";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-  </script>
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/assets/blogImg/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">超歌</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/instagram">相册</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">西安电子科大学13级，热衷于android开发和新酷技术！</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">超歌</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="/assets/blogImg/avatar.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">超歌</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">成长就是学会忍受孤寂，学会自寻乐趣。</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/instagram">相册</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/lcodecorex" title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-android学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/18/android学习笔记/" class="article-date">
-  	<time datetime="2015-11-17T16:50:00.000Z" itemprop="datePublished">Nov 18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      我的Android学习笔记
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="java学习日记-小知识杂记"><a href="#java学习日记-小知识杂记" class="headerlink" title="java学习日记(小知识杂记)"></a>java学习日记(小知识杂记)</h3><h4 id="1-代码可读性"><a href="#1-代码可读性" class="headerlink" title="1.代码可读性"></a>1.代码可读性</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scene.fight(hero,enemy,kongfu,FIST);</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>我的Android学习笔记1 | Oscar Blog</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">我的Android学习笔记1</h1><a id="logo" href="/.">Oscar Blog</a><p class="description">成长就是学会忍受孤寂，学会自寻乐趣。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">我的Android学习笔记1</h1><div class="post-meta">Nov 18, 2015<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2015/11/18/android学习笔记/" href="/2015/11/18/android学习笔记/#comments" class="ds-thread-count"></a><a data-disqus-identifier="2015/11/18/android学习笔记/" href="/2015/11/18/android学习笔记/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h3 id="java学习日记-小知识杂记"><a href="#java学习日记-小知识杂记" class="headerlink" title="java学习日记(小知识杂记)"></a>java学习日记(小知识杂记)</h3><h4 id="1-代码可读性"><a href="#1-代码可读性" class="headerlink" title="1.代码可读性"></a>1.代码可读性</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fight(hero,enemy,kongfu,FIST);</div></pre></td></tr></table></figure>
 <a id="more"></a>  
 <p>改为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hero.fight(enemy).with(kongfu).by(FIST);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hero.fight(enemy).with(kongfu).by(FIST);</div></pre></td></tr></table></figure>
 <h4 id="2-不想被重载的方法加上final修饰"><a href="#2-不想被重载的方法加上final修饰" class="headerlink" title="2.不想被重载的方法加上final修饰"></a>2.不想被重载的方法加上final修饰</h4><h4 id="3-Thread的run-方法陷阱"><a href="#3-Thread的run-方法陷阱" class="headerlink" title="3.Thread的run()方法陷阱"></a>3.Thread的run()方法陷阱</h4><p>启动线程应该使用thread.start()方法，若写成thread.run()则和一个普通的对象调用一次内部写的run()方法没有区别，而不会启动一个线程</p>
 <h4 id="4-减少判断次数"><a href="#4-减少判断次数" class="headerlink" title="4.减少判断次数"></a>4.减少判断次数</h4><p>判断一个List是否为空时，我们通常会这样判断</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(list.size() &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(list.size() &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</div></pre></td></tr></table></figure>
 <p>它可以直接写为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> list.size() &gt; <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> list.size() &gt; <span class="number">0</span>;</div></pre></td></tr></table></figure>
 <p>再如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(list != <span class="keyword">null</span>)&#123;<span class="keyword">for</span>( ... )&#123; ... &#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(list != <span class="keyword">null</span>)&#123;<span class="keyword">for</span>( ... )&#123; ... &#125;&#125;</div></pre></td></tr></table></figure>
 <p>则可改为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(list == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">for</span>( ... )&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-向上转型后使用的是父类的变量，和继承的方法有所区别"><a href="#5-向上转型后使用的是父类的变量，和继承的方法有所区别" class="headerlink" title="5.向上转型后使用的是父类的变量，和继承的方法有所区别"></a>5.向上转型后使用的是父类的变量，和继承的方法有所区别</h4><h4 id="6-数据库操作"><a href="#6-数据库操作" class="headerlink" title="6.数据库操作"></a>6.数据库操作</h4><h5 id="a-选择表table1中的第20到30条数据"><a href="#a-选择表table1中的第20到30条数据" class="headerlink" title="a.选择表table1中的第20到30条数据"></a>a.选择表table1中的第20到30条数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * form table1 limit 19,11</span><br></pre></td></tr></table></figure>
-<h5 id="b-没有数据进行更新，使用insert会报错。可使用replace"><a href="#b-没有数据进行更新，使用insert会报错。可使用replace" class="headerlink" title="b.没有数据进行更新，使用insert会报错。可使用replace"></a>b.没有数据进行更新，使用insert会报错。可使用replace</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace into table1(id,name) value (1,&quot;bill&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(list == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"><span class="keyword">for</span>( ... )&#123; ... &#125;</div></pre></td></tr></table></figure>
+<h4 id="5-向上转型后使用的是父类的变量，和继承的方法有所区别"><a href="#5-向上转型后使用的是父类的变量，和继承的方法有所区别" class="headerlink" title="5.向上转型后使用的是父类的变量，和继承的方法有所区别"></a>5.向上转型后使用的是父类的变量，和继承的方法有所区别</h4><h4 id="6-数据库操作"><a href="#6-数据库操作" class="headerlink" title="6.数据库操作"></a>6.数据库操作</h4><h5 id="a-选择表table1中的第20到30条数据"><a href="#a-选择表table1中的第20到30条数据" class="headerlink" title="a.选择表table1中的第20到30条数据"></a>a.选择表table1中的第20到30条数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * form table1 limit 19,11</div></pre></td></tr></table></figure>
+<h5 id="b-没有数据进行更新，使用insert会报错。可使用replace"><a href="#b-没有数据进行更新，使用insert会报错。可使用replace" class="headerlink" title="b.没有数据进行更新，使用insert会报错。可使用replace"></a>b.没有数据进行更新，使用insert会报错。可使用replace</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">replace into table1(id,name) value (1,&quot;bill&quot;);</div></pre></td></tr></table></figure>
 <h4 id="7-持有Context导致的内存泄漏问题"><a href="#7-持有Context导致的内存泄漏问题" class="headerlink" title="7.持有Context导致的内存泄漏问题"></a>7.持有Context导致的内存泄漏问题</h4><p><code>如果一个对象持有的Context(比如Activity)的生命周期比这个对象的短，则会引起内存泄漏</code><br><a href="http://droidyue.com/blog/2015/04/12/avoid-memory-leaks-on-context-in-android/" target="_blank" rel="external">点击此处查看相关博客</a><br><a href="http://droidyue.com/blog/2015/01/11/looking-into-singleton/" target="_blank" rel="external">单例模式详解</a></p>
 <blockquote>
 <ul>
@@ -247,27 +31,27 @@
 <li>用法</li>
 </ul>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ViewPagerScroller viewPagerScroller = <span class="keyword">new</span> ViewPagerScroller(<span class="keyword">this</span>,<span class="keyword">new</span> DecelerateInterpolator(),<span class="keyword">true</span>);</span><br><span class="line">        viewPagerScroller.setScrollDuration(<span class="number">400</span>);</span><br><span class="line">        viewPagerScroller.initViewPagerScroll(mainPager);<span class="comment">//这个是设置切换过渡时间</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ViewPagerScroller viewPagerScroller = <span class="keyword">new</span> ViewPagerScroller(<span class="keyword">this</span>,<span class="keyword">new</span> DecelerateInterpolator(),<span class="keyword">true</span>);</div><div class="line">        viewPagerScroller.setScrollDuration(<span class="number">400</span>);</div><div class="line">        viewPagerScroller.initViewPagerScroll(mainPager);<span class="comment">//这个是设置切换过渡时间</span></div></pre></td></tr></table></figure>
 <ul>
 <li>实现代码</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * ViewPager 滚动速度设置</span><br><span class="line">     *</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewPagerScroller</span> <span class="keyword">extends</span> <span class="title">Scroller</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> mScrollDuration = <span class="number">2000</span>;             <span class="comment">// 滑动速度</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * 设置速度速度</span><br><span class="line">         * <span class="doctag">@param</span> duration</span><br><span class="line">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setScrollDuration</span><span class="params">(<span class="keyword">int</span> duration)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.mScrollDuration = duration;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context, Interpolator interpolator)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context, interpolator);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context, Interpolator interpolator, <span class="keyword">boolean</span> flywheel)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context, interpolator, flywheel);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startScroll</span><span class="params">(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy, <span class="keyword">int</span> duration)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.startScroll(startX, startY, dx, dy, mScrollDuration);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startScroll</span><span class="params">(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.startScroll(startX, startY, dx, dy, mScrollDuration);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initViewPagerScroll</span><span class="params">(ViewPager viewPager)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Field mScroller = ViewPager.class.getDeclaredField(<span class="string">"mScroller"</span>);</span><br><span class="line">                mScroller.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                mScroller.set(viewPager, <span class="keyword">this</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * ViewPager 滚动速度设置</div><div class="line">     *</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewPagerScroller</span> <span class="keyword">extends</span> <span class="title">Scroller</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> mScrollDuration = <span class="number">2000</span>;             <span class="comment">// 滑动速度</span></div><div class="line"></div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 设置速度速度</div><div class="line">         * <span class="doctag">@param</span> duration</div><div class="line">         */</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setScrollDuration</span><span class="params">(<span class="keyword">int</span> duration)</span></span>&#123;</div><div class="line">            <span class="keyword">this</span>.mScrollDuration = duration;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(context);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context, Interpolator interpolator)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(context, interpolator);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerScroller</span><span class="params">(Context context, Interpolator interpolator, <span class="keyword">boolean</span> flywheel)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(context, interpolator, flywheel);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startScroll</span><span class="params">(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy, <span class="keyword">int</span> duration)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.startScroll(startX, startY, dx, dy, mScrollDuration);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startScroll</span><span class="params">(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.startScroll(startX, startY, dx, dy, mScrollDuration);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initViewPagerScroll</span><span class="params">(ViewPager viewPager)</span> </span>&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Field mScroller = ViewPager.class.getDeclaredField(<span class="string">"mScroller"</span>);</div><div class="line">                mScroller.setAccessible(<span class="keyword">true</span>);</div><div class="line">                mScroller.set(viewPager, <span class="keyword">this</span>);</div><div class="line">            &#125; <span class="keyword">catch</span>(Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h4 id="9-android-4-4-实现沉浸式状态栏"><a href="#9-android-4-4-实现沉浸式状态栏" class="headerlink" title="9. android 4.4 实现沉浸式状态栏"></a>9. android 4.4 实现沉浸式状态栏</h4><ul>
 <li><strong>1.xml style文件</strong>—–style.xml(v-19)</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="xml"></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowActionBar"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColorPrimary"</span>&gt;</span>#eeeeee<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsTranslucent"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentNavigation"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowActionBar"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>#3498db<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColorPrimary"</span>&gt;</span>#eeeeee<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsTranslucent"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentNavigation"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>2.然后需要在布局文件根节点设置</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:fitsSystemWindows="true"</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:fitsSystemWindows="true"</div></pre></td></tr></table></figure>
 <ul>
 <li>3.导入开源库</li>
 </ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="string">'com.readystatesoftware.systembartint:systembartint:1.0.3'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> <span class="string">'com.readystatesoftware.systembartint:systembartint:1.0.3'</span></div></pre></td></tr></table></figure>
 <ul>
 <li>4.在MainActivity的onCreate方法中设置</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">applyKitKatTranslucency();</span><br><span class="line"><span class="comment">/**</span><br><span class="line">     * Apply KitKat specific translucency.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">applyKitKatTranslucency</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// KitKat translucent navigation/status bar.</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">            setTranslucentStatus(<span class="keyword">true</span>); <span class="comment">//设置透明状态栏</span></span><br><span class="line">            SystemBarTintManager mTintManager = <span class="keyword">new</span> SystemBarTintManager(<span class="keyword">this</span>);</span><br><span class="line">            mTintManager.setStatusBarTintEnabled(<span class="keyword">true</span>);</span><br><span class="line">            mTintManager.setNavigationBarTintEnabled(<span class="keyword">true</span>);</span><br><span class="line">            mTintManager.setTintColor(<span class="number">0xFF3498db</span>); <span class="comment">//设置状态栏颜色</span></span><br><span class="line">            <span class="comment">//mTintManager.setTintDrawable(UIElementsHelper.getGeneralActionBarBackground(this));</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TargetApi</span>(<span class="number">19</span>)</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTranslucentStatus</span><span class="params">(<span class="keyword">boolean</span> on)</span> </span>&#123;</span><br><span class="line">        Window win = getWindow();</span><br><span class="line">        WindowManager.LayoutParams winParams = win.getAttributes();</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;</span><br><span class="line">        <span class="keyword">if</span> (on) &#123;</span><br><span class="line">            winParams.flags |= bits;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            winParams.flags &amp;= ~bits;</span><br><span class="line">        &#125;</span><br><span class="line">        win.setAttributes(winParams);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">applyKitKatTranslucency();</div><div class="line"><span class="comment">/**</span></div><div class="line">     * Apply KitKat specific translucency.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">applyKitKatTranslucency</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// KitKat translucent navigation/status bar.</span></div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">            setTranslucentStatus(<span class="keyword">true</span>); <span class="comment">//设置透明状态栏</span></div><div class="line">            SystemBarTintManager mTintManager = <span class="keyword">new</span> SystemBarTintManager(<span class="keyword">this</span>);</div><div class="line">            mTintManager.setStatusBarTintEnabled(<span class="keyword">true</span>);</div><div class="line">            mTintManager.setNavigationBarTintEnabled(<span class="keyword">true</span>);</div><div class="line">            mTintManager.setTintColor(<span class="number">0xFF3498db</span>); <span class="comment">//设置状态栏颜色</span></div><div class="line">            <span class="comment">//mTintManager.setTintDrawable(UIElementsHelper.getGeneralActionBarBackground(this));</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@TargetApi</span>(<span class="number">19</span>)</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTranslucentStatus</span><span class="params">(<span class="keyword">boolean</span> on)</span> </span>&#123;</div><div class="line">        Window win = getWindow();</div><div class="line">        WindowManager.LayoutParams winParams = win.getAttributes();</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;</div><div class="line">        <span class="keyword">if</span> (on) &#123;</div><div class="line">            winParams.flags |= bits;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            winParams.flags &amp;= ~bits;</div><div class="line">        &#125;</div><div class="line">        win.setAttributes(winParams);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h4 id="10-可滑动tabs页"><a href="#10-可滑动tabs页" class="headerlink" title="10.可滑动tabs页"></a>10.可滑动tabs页</h4><p><strong>ViewPager + RadioGroup</strong></p>
 <h4 id="11-Fragment应该在什么地方初始化"><a href="#11-Fragment应该在什么地方初始化" class="headerlink" title="11.Fragment应该在什么地方初始化"></a>11.Fragment应该在什么地方初始化</h4><p><img src="/assets/blogImg/fragment_live.png" alt="Fragment的生命周期"></p>
 <blockquote>
@@ -279,7 +63,7 @@
 <li>如果要使用FragmentManager，必须使用getSupportFragmentManager()</li>
 <li>对于使用<fragment>标签的，sdk版本在14以上的要用getFragmentManager(),而在14一下的可以用getSupportFragmentManager()</fragment></li>
 </ul>
-<h4 id="13-PhotoView和ViewPager缩放溢出bug"><a href="#13-PhotoView和ViewPager缩放溢出bug" class="headerlink" title="13.PhotoView和ViewPager缩放溢出bug"></a>13.PhotoView和ViewPager缩放溢出bug</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个bug是android ViewPager 自己的问题，解决方案如下</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onInterceptTouchEvent(ev);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// ignore it</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(ev);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalArgumentException ex) &#123;</span><br><span class="line">            <span class="comment">// ignore it</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="13-PhotoView和ViewPager缩放溢出bug"><a href="#13-PhotoView和ViewPager缩放溢出bug" class="headerlink" title="13.PhotoView和ViewPager缩放溢出bug"></a>13.PhotoView和ViewPager缩放溢出bug</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这个bug是android ViewPager 自己的问题，解决方案如下</span></div><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onInterceptTouchEvent(ev);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="comment">// ignore it</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(ev);</div><div class="line">        &#125; <span class="keyword">catch</span> (IllegalArgumentException ex) &#123;</div><div class="line">            <span class="comment">// ignore it</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h4 id="14-Toolbar使用"><a href="#14-Toolbar使用" class="headerlink" title="14.Toolbar使用"></a>14.Toolbar使用</h4><ul>
 <li>Activity需要继承自AppCompatActivity</li>
 <li><p>设置显示小箭头</p>
@@ -290,119 +74,39 @@
 <li><p>设置小箭头的事件</p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                    finish();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                    finish();</div><div class="line">                &#125;</div><div class="line">            &#125;);</div></pre></td></tr></table></figure>
 <ul>
 <li>Android-ObservableScrollView  (<strong>github上的开源库</strong>)</li>
 </ul>
-<h4 id="15-不用注解绑定id"><a href="#15-不用注解绑定id" class="headerlink" title="15.不用注解绑定id"></a>15.不用注解绑定id</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SparseArray&lt;View&gt; mViews = <span class="keyword">new</span> SparseArray&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> &lt;T extends View&gt; <span class="function">T <span class="title">bindView</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        T view = (T) mViews.get(id);</span><br><span class="line">        <span class="keyword">if</span>(view == <span class="keyword">null</span>)&#123;</span><br><span class="line">            view = (T) findViewById(id);</span><br><span class="line">            mViews.put(id,view);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T extends View&gt; <span class="function">T <span class="title">get</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (T)bindView(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(View.OnClickListener listener,<span class="keyword">int</span>... ids)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(ids == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> id : ids)&#123;</span><br><span class="line">            get(id).setOnClickListener(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="15-不用注解绑定id"><a href="#15-不用注解绑定id" class="headerlink" title="15.不用注解绑定id"></a>15.不用注解绑定id</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> SparseArray&lt;View&gt; mViews = <span class="keyword">new</span> SparseArray&lt;&gt;();</div><div class="line"></div><div class="line"><span class="keyword">public</span> &lt;T extends View&gt; <span class="function">T <span class="title">bindView</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</div><div class="line">        T view = (T) mViews.get(id);</div><div class="line">        <span class="keyword">if</span>(view == <span class="keyword">null</span>)&#123;</div><div class="line">            view = (T) findViewById(id);</div><div class="line">            mViews.put(id,view);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> view;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> &lt;T extends View&gt; <span class="function">T <span class="title">get</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> (T)bindView(id);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(View.OnClickListener listener,<span class="keyword">int</span>... ids)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(ids == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> id : ids)&#123;</div><div class="line">            get(id).setOnClickListener(listener);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h4 id="16-fragment点击穿透问题"><a href="#16-fragment点击穿透问题" class="headerlink" title="16.fragment点击穿透问题"></a>16.fragment点击穿透问题</h4><ul>
 <li>1.在xml fragment的包裹容器中设置 android:clickable=”true”,可能会导致其它的不可点击的情况</li>
 <li>2.Fragment实现View.OnTouchListener接口，设置根部局的触摸事件，重写onTouch方法-&gt;return true;(阻止事件传递)</li>
 </ul>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/11/18/android Path工具学习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android Path工具学习
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="android学习笔记" data-title="我的Android学习笔记" data-url="http://lcodecorex.github.io/2015/11/18/android学习笔记/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"lcodecore"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 超歌
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
-      	</div>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: undefined,
-		animate: undefined,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: undefined
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </div>
-</body>
-</html>
+<h4 id="17-Android-Service及IPC通信"><a href="#17-Android-Service及IPC通信" class="headerlink" title="17. Android Service及IPC通信"></a>17. Android Service及IPC通信</h4><p>Service有两种，本地服务和远程服务，本地服务运行在同一进程中，远程服务运行在不同服务中</p>
+<p>开启Service有两种方式，startService()和bindService()。<br>当Client调用startService()后，Client和Service并没有关联，其结束也要通过stopSelf()结束（或是stopService()方法）；而Client调用bindService()后，二者相互关联，它们通过Binder的代理对象进行交互，结束服务调用unBindService()断开关联即可。</p>
+<p>AIDL（Android Interface Definition Language）是一种IDL语言，用于生成可在两个进程间通信的代码。AIDL面向接口，其用于约束两个进程间的通讯规则，供编译器生成代码，进程间的通信信息，首先会被转换成AIDL协议消息，然后发送给对方，对方收到AIDL协议消息后再转成相应的对象（信息经过了双向转换，代理类由编译器生成）</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2015/11/18/android学习笔记/" data-id="cis34qcre000nhw5o4ayp2mbo" class="article-share-link">分享到</a><div class="tags"><a href="/tags/学习/">学习</a></div><div class="post-nav"><a href="/2015/11/18/android Path工具学习/" class="pre">android Path工具学习</a></div><div data-thread-key="2015/11/18/android学习笔记/" data-title="我的Android学习笔记1" data-url="http://yoursite.com/2015/11/18/android学习笔记/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2015/11/18/android学习笔记/" data-title="我的Android学习笔记1" data-url="http://yoursite.com/2015/11/18/android学习笔记/" data-author-key="1" class="ds-thread"></div><div id="disqus_thread"><script>var disqus_shortname = 'lcodecore';
+var disqus_identifier = '2015/11/18/android学习笔记/';
+var disqus_title = '我的Android学习笔记1';
+var disqus_url = 'http://yoursite.com/2015/11/18/android学习笔记/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//lcodecore.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JNI/" style="font-size: 15px;">JNI</a> <a href="/tags/安全/" style="font-size: 15px;">安全</a> <a href="/tags/响应式编程/" style="font-size: 15px;">响应式编程</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/项目搭建/" style="font-size: 15px;">项目搭建</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/整理/" style="font-size: 15px;">整理</a> <a href="/tags/求职/" style="font-size: 15px;">求职</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android插件化/">Android应用插件化原理与实现（待续）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/Android热补丁动态修复HotFix/">Android热补丁动态修复技术Hotfix</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/adapter深入理解学习/">Adapter学习与优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/Android代码混淆详解/">Android代码混淆详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/Android SQLite操作性能优化办法(参考GreenDao)/">Android SQLite操作性能优化办法-参考GreenDao</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/SQL学习/">SQL学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/Android应用差分更新工具bsdiff/">Android应用差分更新工具bsdiff</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Glide源码分析0721/">Android图片加载框架Glide源码浅析TODO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android网络请求实现及okhttp源码浅析/">Android网络请求实现与okhttp源码浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/Android静态代码检查20160720/">Android静态代码检测</a></li></ul></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//lcodecore.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/lcodecorex" title="github" target="_blank">github</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Oscar Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'超歌'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
